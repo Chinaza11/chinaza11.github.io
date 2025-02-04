@@ -3,12 +3,13 @@ project:
   output-dir: docs
 
 website:
-  title: "chinaza11.github.io"
+  title: "Chinaza Nnamdi"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - projects.qmd
 
 format:
   html:
