@@ -1,9 +1,93 @@
-# Preface {.unnumbered}
+# About me {.unnumbered}
 
-This is a Quarto book.
+![](images/1664782058666.jpg){width="325"}
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+-   I am passionate about transforming data into valuable insights through the application of computational tools and statistical methodologies.
 
-```{r}
-1 + 1
-```
+-   I am experienced in the handling, analyzing, and leveraging of large, complex datasets to solve challenging problems, driving data-informed decision-making and operational improvements.
+
+-   I will use this website to document projects I have worked on and currently working on that have no public access restrictions.
+
+-   Email: nnamdidavies\@gmail.com
+
+-   [GitHub](https://github.com/Chinaza11/)
+
+-   [LinkedIn](https://www.linkedin.com/in/chinaza-davies-nnamdi/)
+
+## Skills
+
+-   [Computational tools:]{.underline}
+
+    -   Programming, scripting & version control: Python, R, SQL, shell scripting, Git.
+
+    -   Containerization & virtualization: Docker, Singularity, Conda.
+
+    -   Computing & automation: Nextflow, HPC, SLURM job scheduler, AWS.
+
+-   [Bioinformatics tools:]{.underline} Muscle, Clustal-Omega, SIFT, Minimap2, CD-HIT, Bowtie2, STAR, Trimmomatic, mmquant, htseq-count, samtools, vcftools.
+
+-   [Libraries and Packages:]{.underline}
+
+    -   Python: numpy, pandas, subprocess, concurrent, BeautifulSoup (bs4), requests, Scikit-Learn, matplotlib, seaborn.
+
+    -   R: tidyverse, ggplot2, UpSetR, DESeq2, glmmSeq, clusterProfiler, bioconductor.
+
+-   [Statistical and machine learning methods:]{.underline}
+
+    -   Statistics: experimental design, descriptive and inferential statistics, probability theory.
+
+    -   Machine learning: regression, random forest, K-means clustering, Principal Component Analysis (PCA), Artificial Neural Networks, Linear Discriminant Analysis, K-Nearest Neighbors.
+
+## Work Experience
+
+**Bioinformatics Research Assistant (**Aug. 2023 – Present)
+
+*Department of Bioinformatics and Computational Biology, University of North Carolina, Charlotte, North Carolina*
+
+-   Building a pipeline for structural variant genotyping using pangenome graphs, integrating tools like Vgtool kit, Minimap2, Cactus, etc.
+
+-   Employed statistical and machine learning methods such as Wald’s test, hypergeometric test, PCA to uncover novel genetic elements and the molecular mechanisms underlying biological processes. Some of these biological processes were the therapeutic effects of drugs and stress effects.
+
+-   Utilized computational tools to construct a pan-transcriptome that helped uncover 70% more differentially expressed genes compared to when the conventional pipeline that involves a single reference genome was used.
+
+-   Developed a pipeline for bulk-RNA seq analysis with a pan-transcriptome as the reference sequence and processed datasets of over 8 TB in size.
+
+-   Employed R (tidyverse, UpSetR, DESeq2, glmmSeq, clusterProfiler) and Python (pandas, subprocess, concurrent, bs4, requests, matplotlib) packages for data processing and visualization.
+
+-   Expedited the execution of computational-intensive tasks (e.g., genome indexing, alignment) by utilizing HPC environments, optimizing time-consuming tasks through parallel processing.
+
+-   Developed a workflow and documentation for the easy utilization of a legacy bioinformatic tool, reducing setup and execution time by 50%.
+
+**Research Assistant (**Feb. 2022 – Jul. 2023)
+
+*Institute of Plant Breeding, Genetics & Genomics, University of Georgia, Georgia*
+
+-   Leveraged basic and advanced QTL mapping techniques in R to analyze large peanut datasets, leading to the discovery of novel loci associated with yield and supporting the Georgia peanut breeding program.
+
+-   Performed statistical analysis of peanut phenotypic data in R, employing ANOVA and correlation tests to derive insights.
+
+## Education
+
+University of North Carolina, Charlotte (Aug. 2023 – May 2025)
+
+-   **Master of Science in Bioinformatics (GPA: 3.9/4.0)**
+
+University of Ilorin, Ilorin, Nigeria (Sept. 2013 – Oct. 2017)
+
+-   **Bachelor of Science in Plant Biology (GPA: 3.84/4.0)**
+
+## Professional Development
+
+AWS Certified Cloud Practitioner (Dec. 2024)
+
+-   <https://www.credly.com/badges/988b96cb-4344-44fd-b9d5-5d346d6ec7d3/public_url>
+
+Associate Data Scientist in R (DataCamp, Jan. 2024)
+
+-   <https://www.datacamp.com/completed/statement-of-accomplishment/track/2c7d73ca91bf417da33a5c848cca843004c0fb16>
+
+## Publication
+
+-   **Nnamdi C.D.,** Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in *Sorghum bicolor*. *bioRxiv*. <https://doi.org/10.1101/2024.12.17.626333>
+
+-   El‐Khodor B.F., Reid, R.W., Dominique, A., Sanders, A., Lambirth, K., **Nnamdi C.D.,** et al. 2025. Therapeutic effects of bovine thymus extract on *Caenorhabditis elegans*. *FASEB* \[Manuscript under preparation\].

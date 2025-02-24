@@ -2,29 +2,85 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Chinaza Nnamdi",
+    "title": "Chinaza Nnamdi Portfolio",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
+    "text": "About me"
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "objectID": "index.html#skills",
+    "href": "index.html#skills",
+    "title": "Chinaza Nnamdi Portfolio",
+    "section": "Skills",
+    "text": "Skills\n\nComputational tools:\n\nProgramming, scripting & version control: Python, R, SQL, shell scripting, Git.\nContainerization & virtualization: Docker, Singularity, Conda.\nComputing & automation: Nextflow, HPC, SLURM job scheduler, AWS.\n\nBioinformatics tools: Muscle, Clustal-Omega, SIFT, Minimap2, CD-HIT, Bowtie2, STAR, Trimmomatic, mmquant, htseq-count, samtools, vcftools.\nLibraries and Packages:\n\nPython: numpy, pandas, subprocess, concurrent, BeautifulSoup (bs4), requests, Scikit-Learn, matplotlib, seaborn.\nR: tidyverse, ggplot2, UpSetR, DESeq2, glmmSeq, clusterProfiler, bioconductor.\n\nStatistical and machine learning methods:\n\nStatistics: experimental design, descriptive and inferential statistics, probability theory.\nMachine learning: regression, random forest, K-means clustering, Principal Component Analysis (PCA), Artificial Neural Networks, Linear Discriminant Analysis, K-Nearest Neighbors."
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+    "objectID": "index.html#work-experience",
+    "href": "index.html#work-experience",
+    "title": "Chinaza Nnamdi Portfolio",
+    "section": "Work Experience",
+    "text": "Work Experience\nBioinformatics Research Assistant (Aug. 2023 – Present)\nDepartment of Bioinformatics and Computational Biology, University of North Carolina, Charlotte, North Carolina\n\nBuilding a pipeline for structural variant genotyping using pangenome graphs, integrating tools like Vgtool kit, Minimap2, Cactus, etc.\nEmployed statistical and machine learning methods such as Wald’s test, hypergeometric test, PCA to uncover novel genetic elements and the molecular mechanisms underlying biological processes. Some of these biological processes were the therapeutic effects of drugs and stress effects.\nUtilized computational tools to construct a pan-transcriptome that helped uncover 70% more differentially expressed genes compared to when the conventional pipeline that involves a single reference genome was used.\nDeveloped a pipeline for bulk-RNA seq analysis with a pan-transcriptome as the reference sequence and processed datasets of over 8 TB in size.\nEmployed R (tidyverse, UpSetR, DESeq2, glmmSeq, clusterProfiler) and Python (pandas, subprocess, concurrent, bs4, requests, matplotlib) packages for data processing and visualization.\nExpedited the execution of computational-intensive tasks (e.g., genome indexing, alignment) by utilizing HPC environments, optimizing time-consuming tasks through parallel processing.\nDeveloped a workflow and documentation for the easy utilization of a legacy bioinformatic tool, reducing setup and execution time by 50%.\n\nResearch Assistant (Feb. 2022 – Jul. 2023)\nInstitute of Plant Breeding, Genetics & Genomics, University of Georgia, Georgia\n\nLeveraged basic and advanced QTL mapping techniques in R to analyze large peanut datasets, leading to the discovery of novel loci associated with yield and supporting the Georgia peanut breeding program.\nPerformed statistical analysis of peanut phenotypic data in R, employing ANOVA and correlation tests to derive insights."
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Chinaza Nnamdi Portfolio",
+    "section": "Education",
+    "text": "Education\nUniversity of North Carolina, Charlotte (Aug. 2023 – May 2025)\n\nMaster of Science in Bioinformatics (GPA: 3.9/4.0)\n\nUniversity of Ilorin, Ilorin, Nigeria (Sept. 2013 – Oct. 2017)\n\nBachelor of Science in Plant Biology (GPA: 3.84/4.0)"
+  },
+  {
+    "objectID": "index.html#professional-development",
+    "href": "index.html#professional-development",
+    "title": "Chinaza Nnamdi Portfolio",
+    "section": "Professional Development",
+    "text": "Professional Development\nAWS Certified Cloud Practitioner (Dec. 2024)\n\nhttps://www.credly.com/badges/988b96cb-4344-44fd-b9d5-5d346d6ec7d3/public_url\n\nAssociate Data Scientist in R (DataCamp, Jan. 2024)\n\nhttps://www.datacamp.com/completed/statement-of-accomplishment/track/2c7d73ca91bf417da33a5c848cca843004c0fb16"
+  },
+  {
+    "objectID": "index.html#publication",
+    "href": "index.html#publication",
+    "title": "Chinaza Nnamdi Portfolio",
+    "section": "Publication",
+    "text": "Publication\n\nNnamdi C.D., Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in Sorghum bicolor. bioRxiv. https://doi.org/10.1101/2024.12.17.626333\nEl‐Khodor B.F., Reid, R.W., Dominique, A., Sanders, A., Lambirth, K., Nnamdi C.D., et al. 2025. Therapeutic effects of bovine thymus extract on Caenorhabditis elegans. FASEB [Manuscript under preparation]."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "Machine Learning\nPlaceholder for a descriptive image\n\n\nSingle Cell RNASeq\nPlaceholder for a descriptive image\n\n\nCapstone Project for Computational Molecular Evolution Course\nPlaceholder for a descriptive image\n\n\nBulk RNASeq with a Pan-transcriptome\nPlaceholder for a descriptive image\n\n\nStructural Variant Genotyping with a Pangenome\nPlaceholder for a descriptive image"
+  },
+  {
+    "objectID": "machine_learning/background.html",
+    "href": "machine_learning/background.html",
+    "title": "Background",
+    "section": "",
+    "text": "I will be adding the capstone project from a machine learning course here."
+  },
+  {
+    "objectID": "capstone_for_cmr_course/background.html",
+    "href": "capstone_for_cmr_course/background.html",
+    "title": "Background",
+    "section": "",
+    "text": "I will be adding the capstone project from a computational molecular evolution course here."
+  },
+  {
+    "objectID": "bulk_rnaseq_with_pantranscriptome/background.html",
+    "href": "bulk_rnaseq_with_pantranscriptome/background.html",
+    "title": "Background",
+    "section": "",
+    "text": "This will be updated with the analysis done for the paper below once it has been accepted for publication.\n\nNnamdi C.D., Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in Sorghum bicolor. bioRxiv. https://doi.org/10.1101/2024.12.17.626333\n\nThis paper is currently undergoing final revisions for submission to a peer-reviewed journal.\nThis is the GitHub repository for the analysis done in the paper: https://github.com/Chinaza11/pantranscriptome_iron-deficiency_sorghum-genotypes"
+  },
+  {
+    "objectID": "single_cell_rnaseq/background.html",
+    "href": "single_cell_rnaseq/background.html",
+    "title": "Background",
+    "section": "",
+    "text": "I have seen a trend where a lot of recent bioinformatics jobs require experience analyzing single-cell RNASeq data. This project will document my experience learning and implementing methodologies for single-cell RNASeq data analysis."
+  },
+  {
+    "objectID": "sv_genotyping/background.html",
+    "href": "sv_genotyping/background.html",
+    "title": "Background",
+    "section": "",
+    "text": "This is a project I am currently working on. I am building a pipeline for genotyping structural variants using a pangenome graph. For this project, I will be utilizing the methodologies and tools implemented in the papers below and applying them to a different organism.\n\nHickey, G., Heller, D., Monlong, J. et al. Genotyping structural variants in pangenome graphs using the vg toolkit. Genome Biol 21, 35 (2020). https://doi.org/10.1186/s13059-020-1941-7\nJouni Sirén et al. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. Science 374, abg8871 (2021). https://doi.org/10.1126/science.abg8871\n\nThis project is a subset of a much bigger project that will lead to a paper that will be submitted to a peer-reviewed journal upon completion. I will be updating this webpage with the pipeline I have built once the paper has been accepted for publication."
   }
 ]

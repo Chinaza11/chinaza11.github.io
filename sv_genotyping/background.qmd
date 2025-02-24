@@ -1,0 +1,9 @@
+# Background {.unnumbered}
+
+This is a project I am currently working on. I am building a pipeline for genotyping structural variants using a pangenome graph. For this project, I will be utilizing the methodologies and tools implemented in the papers below and applying them to a different organism.
+
+-   Hickey, G., Heller, D., Monlong, J. *et al.* Genotyping structural variants in pangenome graphs using the vg toolkit. *Genome Biol* 21, 35 (2020). <https://doi.org/10.1186/s13059-020-1941-7>
+
+-   Jouni Sirén et al. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. Science 374, abg8871 (2021). <https://doi.org/10.1126/science.abg8871>
+
+This project is a subset of a much bigger project that will lead to a paper that will be submitted to a peer-reviewed journal upon completion. I will be updating this webpage with the pipeline I have built once the paper has been accepted for publication.
