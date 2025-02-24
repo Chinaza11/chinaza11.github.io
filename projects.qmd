@@ -8,7 +8,7 @@ Placeholder for a descriptive image
 
 Placeholder for a descriptive image
 
-### [Capstone Project for Computational Molecular Evolution Course](https://chinaza11.github.io/capstone_for_cmr_course/background.html)
+### [Structural Variant Genotyping with a Pangenome](https://chinaza11.github.io/sv_genotyping/background.html)
 
 Placeholder for a descriptive image
 
@@ -16,6 +16,8 @@ Placeholder for a descriptive image
 
 Placeholder for a descriptive image
 
-### [Structural Variant Genotyping with a Pangenome](https://chinaza11.github.io/sv_genotyping/background.html)
+### [Capstone Project for Computational Molecular Evolution Course](https://chinaza11.github.io/capstone_for_cmr_course/background.html)
 
 Placeholder for a descriptive image
+
+### 
