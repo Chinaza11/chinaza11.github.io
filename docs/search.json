@@ -46,7 +46,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "Machine Learning\nPlaceholder for a descriptive image\n\n\nSingle Cell RNASeq\nPlaceholder for a descriptive image\n\n\nStructural Variant Genotyping with a Pangenome\nPlaceholder for a descriptive image\n\n\nBulk RNASeq with a Pan-transcriptome\nPlaceholder for a descriptive image\n\n\nCapstone Project for Computational Molecular Evolution Course\nPlaceholder for a descriptive image"
+    "text": "Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch\nPlaceholder for a descriptive image\n\n\nMachine Learning: Placeholder for another project\n\n\nSingle Cell RNASeq\nPlaceholder for a descriptive image\n\n\nStructural Variant Genotyping with a Pangenome\nPlaceholder for a descriptive image\n\n\nBulk RNASeq with a Pan-transcriptome\nPlaceholder for a descriptive image\n\n\nCapstone Project for Computational Molecular Evolution Course\nPlaceholder for a descriptive image"
   },
   {
     "objectID": "machine_learning/background.html",
@@ -82,5 +82,40 @@
     "title": "Background",
     "section": "",
     "text": "This is a project I am currently working on. I am building a pipeline for genotyping structural variants using a pangenome graph. For this project, I will be utilizing the methodologies and tools implemented in the papers below and applying them to a different organism.\n\nHickey, G., Heller, D., Monlong, J. et al. Genotyping structural variants in pangenome graphs using the vg toolkit. Genome Biol 21, 35 (2020). https://doi.org/10.1186/s13059-020-1941-7\nJouni Sirén et al. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. Science 374, abg8871 (2021). https://doi.org/10.1126/science.abg8871\n\nThis project is a subset of a much bigger project that will lead to a paper that will be submitted to a peer-reviewed journal upon completion. I will be updating this webpage with the pipeline I have built once the paper has been accepted for publication."
+  },
+  {
+    "objectID": "machine_learning/pca.html#result-summary",
+    "href": "machine_learning/pca.html#result-summary",
+    "title": "2  Principal Component Analysis",
+    "section": "2.1 Result summary:",
+    "text": "2.1 Result summary:\n\n2.1.1 - The result when my code (that was built from scratch) was used for the analysis was similar to the result gotten using the Sklearn PCA package.\n\n\n2.1.2 - Elbow method was used to select principal components (PC1-PC6) for logsitic regression and ANN."
+  },
+  {
+    "objectID": "machine_learning/logistic_regression.html#result-summary",
+    "href": "machine_learning/logistic_regression.html#result-summary",
+    "title": "3  Logistic Regression",
+    "section": "3.1 Result summary:",
+    "text": "3.1 Result summary:\n\n3.1.1 - The result when my code was used for the analysis was similar to the result gotten using the Sklearn logistic regression package.\n\n\n3.1.2 - Both models (mine and SKlearn) had high accuracy scores indicating good model performance."
+  },
+  {
+    "objectID": "machine_learning/ann.html#result-summary",
+    "href": "machine_learning/ann.html#result-summary",
+    "title": "4  Artificial Neural Network",
+    "section": "4.1 Result summary:",
+    "text": "4.1 Result summary:\n\n4.1.1 - The result when my code was used for the analysis was similar to the result gotten using the Sklearn package.\n\n\n4.1.2 - Both models (mine and SKlearn) had high accuracy scores indicating good model performance."
+  },
+  {
+    "objectID": "machine_learning/background.html#about-data",
+    "href": "machine_learning/background.html#about-data",
+    "title": "1  Background",
+    "section": "1.1 About data:",
+    "text": "1.1 About data:\n The data comprised 863 samples, 15606 independent variables, and two classes of target variables (0/1). \n\n\n1.1.1 Independent variables\n\nimport pandas as pd\n\ndf_x = pd.read_csv(\"C:/Users/nnamd/Documents/data/machine_learning/sandbox_3/sample_data_for_project_final.csv\")\ndf_x\n\n\n\n\n\n\n\n\nUnnamed: 0\nsample_1\nsample_2\nsample_3\nsample_4\nsample_5\nsample_6\nsample_7\nsample_8\nsample_9\n...\nsample_855\nsample_856\nsample_857\nsample_858\nsample_859\nsample_860\nsample_861\nsample_862\nsample_863\nsample_864\n\n\n\n\n0\nvariable_1\n1.335571e+05\n4.067772e+05\n4.653638e+05\n2.327503e+05\n3.204984e+05\n9.507953e+04\n2.629849e+05\n1.677002e+05\n1.651118e+05\n...\n3.331851e+05\n4.848780e+05\n2.804682e+05\n5.179674e+05\n4.358776e+05\n3.139291e+05\n3.904108e+05\n3.532888e+05\n5.979247e+05\n4.931237e+05\n\n\n1\nvariable_2\n2.914323e+08\n2.058200e+08\n1.572093e+08\n1.889364e+08\n2.151381e+08\n1.980727e+08\n2.349494e+08\n1.437654e+08\n3.101801e+08\n...\n9.908329e+07\n1.128658e+08\n1.349937e+08\n1.058415e+08\n9.786954e+07\n7.953481e+07\n9.254447e+07\n1.378881e+08\n1.291880e+08\n1.421230e+08\n\n\n2\nvariable_3\n1.039778e+08\n6.959067e+07\n6.546160e+07\n7.890295e+07\n1.099364e+08\n9.149507e+07\n1.177567e+08\n7.226901e+07\n1.280126e+08\n...\n5.433479e+07\n4.719515e+07\n5.444209e+07\n4.031031e+07\n5.985512e+07\n2.243647e+07\n6.748665e+07\n5.571944e+07\n8.007063e+07\n7.203118e+07\n\n\n3\nvariable_4\n1.899937e+07\n2.725515e+07\n5.049965e+07\n3.885274e+07\n3.245649e+07\n2.520913e+07\n3.618445e+07\n4.143107e+07\n2.248020e+07\n...\n3.839418e+07\n3.597201e+07\n1.600624e+07\n1.891379e+07\n2.643795e+07\n2.854334e+07\n2.003175e+07\n1.983767e+07\n1.582618e+07\n2.097925e+07\n\n\n4\nvariable_5\n1.075189e+04\n1.365641e+02\n5.717232e+03\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n3.150963e+03\n1.365641e+02\n...\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n15601\nvariable_15602\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n4.849214e+03\n2.647425e+03\n1.365641e+02\n5.857132e+03\n...\n1.365641e+02\n1.382506e+03\n1.365641e+02\n8.669330e+03\n3.338606e+03\n1.826847e+03\n9.233444e+03\n6.235643e+03\n1.074344e+04\n9.022216e+03\n\n\n15602\nvariable_15603\n1.484041e+04\n1.365641e+02\n8.670437e+03\n1.365641e+02\n9.700260e+03\n2.808402e+03\n9.422814e+03\n1.365641e+02\n3.608028e+03\n...\n1.365641e+02\n6.552061e+03\n7.869005e+03\n6.919266e+03\n3.443958e+03\n5.542762e+03\n1.365641e+02\n7.214279e+03\n9.303027e+03\n8.189856e+03\n\n\n15603\nvariable_15604\n3.509693e+03\n6.338602e+03\n9.574115e+03\n1.731127e+03\n9.168757e+03\n1.365641e+02\n3.158676e+03\n7.219811e+03\n7.749311e+03\n...\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n\n\n15604\nvariable_15605\n1.365641e+02\n2.799276e+03\n6.296987e+03\n1.365641e+02\n4.886416e+03\n1.365641e+02\n6.012350e+03\n6.212321e+03\n5.120082e+03\n...\n6.193849e+03\n1.365641e+02\n5.575186e+03\n4.901934e+03\n5.794283e+03\n7.640553e+03\n4.356595e+03\n1.365641e+02\n9.194651e+03\n5.405931e+03\n\n\n15605\nvariable_15606\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n1.365641e+02\n...\n8.420486e+03\n5.389534e+03\n7.218614e+03\n1.365641e+02\n3.187292e+03\n5.848782e+03\n1.157885e+04\n3.406270e+03\n1.365641e+02\n7.939925e+03\n\n\n\n\n15606 rows × 864 columns\n\n\n\n\n\n\n1.1.2 Target variables\n\ndf_y = pd.read_csv(\"C:/Users/nnamd/Documents/data/machine_learning/sandbox_3/sample_metadata_for_project_final.csv\")\ndf_y\n\n\n\n\n\n\n\n\nsample_name\nsample_label\n\n\n\n\n0\nsample_1\n0\n\n\n1\nsample_2\n1\n\n\n2\nsample_3\n0\n\n\n3\nsample_4\n1\n\n\n4\nsample_5\n0\n\n\n...\n...\n...\n\n\n858\nsample_860\n1\n\n\n859\nsample_861\n0\n\n\n860\nsample_862\n1\n\n\n861\nsample_863\n0\n\n\n862\nsample_864\n1\n\n\n\n\n863 rows × 2 columns"
+  },
+  {
+    "objectID": "machine_learning/background.html#project-goals",
+    "href": "machine_learning/background.html#project-goals",
+    "title": "1  Background",
+    "section": "1.2 Project Goals:",
+    "text": "1.2 Project Goals:\n =&gt; Dimensionality reduction of data using PCA and extraction of interesting principal components.\n=&gt; Using extracted principal components to build logistic regression and ANN models to predict the target variables in the data.\n\n\nThe next pages will show the application of PCA, logistic regression, and ANN models."
   }
 ]

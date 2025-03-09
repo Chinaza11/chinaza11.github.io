@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Chinaza Nnamdi Portfolio - 2&nbsp; Principal Component Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../machine_learning/logistic_regression.html" rel="next">
+<link href="../machine_learning/background.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../machine_learning/background.html">Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch</a></li><li class="breadcrumb-item"><a href="../machine_learning/pca.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principal Component Analysis</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Chinaza Nnamdi Portfolio</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About me</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projects</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Background</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/pca.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principal Component Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/logistic_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/ann.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Artificial Neural Network</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Single-Cell RNASeq</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../single_cell_rnaseq/background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Background</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Structural Variant Genotyping with a Pangenome</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sv_genotyping/background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Background</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Bulk RNASeq with a Pan-transcriptome</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bulk_rnaseq_with_pantranscriptome/background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Background</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Capstone Project for Computational Molecular Evolution Course</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capstone_for_cmr_course/background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Background</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#import-packages" id="toc-import-packages" class="nav-link active" data-scroll-target="#import-packages"><span class="header-section-number">2.0.1</span> Import packages</a></li>
+  <li><a href="#my-pca-code" id="toc-my-pca-code" class="nav-link" data-scroll-target="#my-pca-code"><span class="header-section-number">2.0.2</span> My PCA code</a></li>
+  <li><a href="#load-the-independent-variables" id="toc-load-the-independent-variables" class="nav-link" data-scroll-target="#load-the-independent-variables"><span class="header-section-number">2.0.3</span> Load the independent variables</a></li>
+  <li><a href="#transpose-the-dataframe" id="toc-transpose-the-dataframe" class="nav-link" data-scroll-target="#transpose-the-dataframe"><span class="header-section-number">2.0.4</span> Transpose the dataFrame</a></li>
+  <li><a href="#load-the-target-variable" id="toc-load-the-target-variable" class="nav-link" data-scroll-target="#load-the-target-variable"><span class="header-section-number">2.0.5</span> Load the target variable</a></li>
+  <li><a href="#feature-scaling-standardization" id="toc-feature-scaling-standardization" class="nav-link" data-scroll-target="#feature-scaling-standardization"><span class="header-section-number">2.0.6</span> Feature scaling (standardization)</a></li>
+  <li><a href="#using-my-pca-code" id="toc-using-my-pca-code" class="nav-link" data-scroll-target="#using-my-pca-code"><span class="header-section-number">2.0.7</span> Using my PCA code</a></li>
+  <li><a href="#using-my-pca-code-scree-plot" id="toc-using-my-pca-code-scree-plot" class="nav-link" data-scroll-target="#using-my-pca-code-scree-plot"><span class="header-section-number">2.0.8</span> Using my PCA code: Scree plot</a></li>
+  <li><a href="#using-my-pca-code-scores-plot" id="toc-using-my-pca-code-scores-plot" class="nav-link" data-scroll-target="#using-my-pca-code-scores-plot"><span class="header-section-number">2.0.9</span> Using my PCA code: Scores plot</a></li>
+  <li><a href="#sklearn-pca" id="toc-sklearn-pca" class="nav-link" data-scroll-target="#sklearn-pca"><span class="header-section-number">2.0.10</span> Sklearn PCA</a></li>
+  <li><a href="#sklearn-pca-scree-plot" id="toc-sklearn-pca-scree-plot" class="nav-link" data-scroll-target="#sklearn-pca-scree-plot"><span class="header-section-number">2.0.11</span> Sklearn PCA: Scree plot</a></li>
+  <li><a href="#sklearn-pca-extract-the-top-6-principal-components-and-plot-pc1-and-pc2" id="toc-sklearn-pca-extract-the-top-6-principal-components-and-plot-pc1-and-pc2" class="nav-link" data-scroll-target="#sklearn-pca-extract-the-top-6-principal-components-and-plot-pc1-and-pc2"><span class="header-section-number">2.0.12</span> Sklearn PCA: extract the top 6 principal components and plot PC1 and PC2</a></li>
+  <li><a href="#save-the-dataframe-of-pc1-pc6-for-logistic-regression" id="toc-save-the-dataframe-of-pc1-pc6-for-logistic-regression" class="nav-link" data-scroll-target="#save-the-dataframe-of-pc1-pc6-for-logistic-regression"><span class="header-section-number">2.0.13</span> Save the dataframe of PC1-PC6 for logistic regression</a></li>
+  <li><a href="#result-summary" id="toc-result-summary" class="nav-link" data-scroll-target="#result-summary"><span class="header-section-number">2.1</span> Result summary:</a>
+  <ul class="collapse">
+  <li><a href="#the-result-when-my-code-that-was-built-from-scratch-was-used-for-the-analysis-was-similar-to-the-result-gotten-using-the-sklearn-pca-package." id="toc-the-result-when-my-code-that-was-built-from-scratch-was-used-for-the-analysis-was-similar-to-the-result-gotten-using-the-sklearn-pca-package." class="nav-link" data-scroll-target="#the-result-when-my-code-that-was-built-from-scratch-was-used-for-the-analysis-was-similar-to-the-result-gotten-using-the-sklearn-pca-package."><span class="header-section-number">2.1.1</span> - The result when my code (that was built from scratch) was used for the analysis was similar to the result gotten using the Sklearn PCA package.</a></li>
+  <li><a href="#elbow-method-was-used-to-select-principal-components-pc1-pc6-for-logsitic-regression-and-ann." id="toc-elbow-method-was-used-to-select-principal-components-pc1-pc6-for-logsitic-regression-and-ann." class="nav-link" data-scroll-target="#elbow-method-was-used-to-select-principal-components-pc1-pc6-for-logsitic-regression-and-ann."><span class="header-section-number">2.1.2</span> - Elbow method was used to select principal components (PC1-PC6) for logsitic regression and ANN.</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principal Component Analysis</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><br></p>
+<section id="import-packages" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="import-packages"><span class="header-section-number">2.0.1</span> Import packages</h3>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="my-pca-code" class="level3" data-number="2.0.2">
+<h3 data-number="2.0.2" class="anchored" data-anchor-id="my-pca-code"><span class="header-section-number">2.0.2</span> My PCA code</h3>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PCAAnalysis:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mean_centered_data <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.cov_matrix <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eigenvalues <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eigenvectors <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.scores <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.variance <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.percent_variance <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> mean_centering(<span class="va">self</span>):</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mean_centered_data <span class="op">=</span> <span class="va">self</span>.data <span class="op">-</span> np.mean(<span class="va">self</span>.data, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> compute_covariance_matrix(<span class="va">self</span>):</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.cov_matrix <span class="op">=</span> np.cov(<span class="va">self</span>.mean_centered_data, rowvar<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> perform_eigen_decomposition(<span class="va">self</span>):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eigenvalues, <span class="va">self</span>.eigenvectors <span class="op">=</span> np.linalg.eig(<span class="va">self</span>.cov_matrix)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># prevent complex numbers</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eigenvalues <span class="op">=</span> np.real(<span class="va">self</span>.eigenvalues)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eigenvectors <span class="op">=</span> np.real(<span class="va">self</span>.eigenvectors)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Sort eigenvalues and eigenvectors in descending order</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        sorted_indices <span class="op">=</span> np.argsort(<span class="va">self</span>.eigenvalues)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eigenvalues <span class="op">=</span> <span class="va">self</span>.eigenvalues[sorted_indices]</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eigenvectors <span class="op">=</span> <span class="va">self</span>.eigenvectors[:, sorted_indices]</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> project_data(<span class="va">self</span>):</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.scores <span class="op">=</span> np.dot(<span class="va">self</span>.mean_centered_data, <span class="va">self</span>.eigenvectors)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> compute_variance(<span class="va">self</span>):</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        total_variance <span class="op">=</span> np.<span class="bu">sum</span>(<span class="va">self</span>.eigenvalues)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.variance <span class="op">=</span> <span class="va">self</span>.eigenvalues</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.percent_variance <span class="op">=</span> (<span class="va">self</span>.eigenvalues <span class="op">/</span> total_variance) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> perform_pca(<span class="va">self</span>):</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mean_centering()</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.compute_covariance_matrix()</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.perform_eigen_decomposition()</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.project_data()</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.compute_variance()</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> results(<span class="va">self</span>):</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Variance"</span>: <span class="va">self</span>.variance,</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Percent Variance Explained"</span>: <span class="va">self</span>.percent_variance,</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Scores"</span>: <span class="va">self</span>.scores,</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Loadings"</span>: <span class="va">self</span>.eigenvectors,</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> diplay_result(<span class="va">self</span>):</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Eigenvalues (Variance):"</span>)</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="va">self</span>.variance)</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Percent Variance Explained:"</span>)</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="va">self</span>.percent_variance)</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Principal Components (Eigenvectors):"</span>)</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="va">self</span>.eigenvectors)</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Scores (Projected Data):"</span>)</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="va">self</span>.scores)</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> scree_plot(<span class="va">self</span>, save_path<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>        num_components <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>.percent_variance)</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot only the first 10 principal components if there are more than 10</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> num_components <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>            components_to_plot <span class="op">=</span> <span class="va">self</span>.percent_variance[:<span class="dv">10</span>]</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>            x_ticks <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>            components_to_plot <span class="op">=</span> <span class="va">self</span>.percent_variance</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>            x_ticks <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, num_components <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plotting the scree plot for percentage variance explained</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>        plt.plot(x_ticks, components_to_plot, <span class="st">'o-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="st">'Scree Plot - Percentage Variance Explained'</span>)</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="st">'Principal Component'</span>)</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="st">'Percentage Variance Explained'</span>)</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>        plt.ylim(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>        plt.xticks(x_ticks)</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>        plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> save_path:</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>            plt.savefig(save_path, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, dpi<span class="op">=</span><span class="dv">300</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> scores_plot(<span class="va">self</span>, group_by_target<span class="op">=</span><span class="va">False</span>, target_data<span class="op">=</span><span class="va">False</span>, save_path<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> group_by_target:</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>            pca_df <span class="op">=</span> pd.DataFrame(data<span class="op">=</span><span class="va">self</span>.scores[:,<span class="dv">0</span>:<span class="dv">2</span>], columns<span class="op">=</span>[<span class="st">'PC1'</span>, <span class="st">'PC2'</span>])</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>            pca_df[<span class="st">'Target'</span>] <span class="op">=</span> target_data[<span class="st">'sample_label'</span>]</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>            colors <span class="op">=</span> {<span class="dv">0</span>: <span class="st">'blue'</span>, <span class="dv">1</span>: <span class="st">'red'</span>}</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> target_value, group <span class="kw">in</span> pca_df.groupby(<span class="st">'Target'</span>):</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>                plt.scatter(group[<span class="st">'PC1'</span>], group[<span class="st">'PC2'</span>], color<span class="op">=</span>colors[target_value],</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>                            label<span class="op">=</span><span class="ss">f'Target </span><span class="sc">{</span>target_value<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>            plt.scatter(<span class="va">self</span>.scores[:, <span class="dv">0</span>], <span class="va">self</span>.scores[:, <span class="dv">1</span>], alpha<span class="op">=</span><span class="fl">0.7</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="st">'Scores Plot (PC1 vs PC2)'</span>)</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="st">'PC1 (</span><span class="sc">{}</span><span class="st">%)'</span>.<span class="bu">format</span>(<span class="bu">round</span>(<span class="va">self</span>.percent_variance[<span class="dv">0</span>],<span class="dv">2</span>)))</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="st">'PC2 (</span><span class="sc">{}</span><span class="st">%)'</span>.<span class="bu">format</span>(<span class="bu">round</span>(<span class="va">self</span>.percent_variance[<span class="dv">1</span>],<span class="dv">2</span>)))</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>        plt.legend()</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>        plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> save_path:</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>            plt.savefig(save_path, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, dpi<span class="op">=</span><span class="dv">300</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> loadings_plot(<span class="va">self</span>, save_path<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>        loadings <span class="op">=</span> <span class="va">self</span>.eigenvectors[:, :<span class="dv">2</span>]  <span class="co"># Loadings for PC1 and PC2</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>        plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>        plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, (x, y) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(loadings[:, <span class="dv">0</span>], loadings[:, <span class="dv">1</span>])):</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>            plt.arrow(<span class="dv">0</span>, <span class="dv">0</span>, x, y, color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, head_width<span class="op">=</span><span class="fl">0.05</span>, length_includes_head<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>            plt.text(x<span class="op">*</span><span class="fl">1.15</span>, y<span class="op">*</span><span class="fl">1.04</span>, <span class="va">self</span>.data.columns[i], color<span class="op">=</span><span class="st">'black'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="st">'Loadings Plot (PC1 vs PC2)'</span>)</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="st">'PC1 Loadings'</span>)</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="st">'PC2 Loadings'</span>)</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>        plt.grid(color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">'equal'</span>)</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> save_path:</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>            plt.savefig(save_path, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, dpi<span class="op">=</span><span class="dv">300</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>        plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-the-independent-variables" class="level3" data-number="2.0.3">
+<h3 data-number="2.0.3" class="anchored" data-anchor-id="load-the-independent-variables"><span class="header-section-number">2.0.3</span> Load the independent variables</h3>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_x <span class="op">=</span> pd.read_csv(<span class="st">"C:/Users/nnamd/Documents/data/machine_learning/sandbox_3/sample_data_for_project_final.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">sample_1</th>
+<th data-quarto-table-cell-role="th">sample_2</th>
+<th data-quarto-table-cell-role="th">sample_3</th>
+<th data-quarto-table-cell-role="th">sample_4</th>
+<th data-quarto-table-cell-role="th">sample_5</th>
+<th data-quarto-table-cell-role="th">sample_6</th>
+<th data-quarto-table-cell-role="th">sample_7</th>
+<th data-quarto-table-cell-role="th">sample_8</th>
+<th data-quarto-table-cell-role="th">sample_9</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">sample_855</th>
+<th data-quarto-table-cell-role="th">sample_856</th>
+<th data-quarto-table-cell-role="th">sample_857</th>
+<th data-quarto-table-cell-role="th">sample_858</th>
+<th data-quarto-table-cell-role="th">sample_859</th>
+<th data-quarto-table-cell-role="th">sample_860</th>
+<th data-quarto-table-cell-role="th">sample_861</th>
+<th data-quarto-table-cell-role="th">sample_862</th>
+<th data-quarto-table-cell-role="th">sample_863</th>
+<th data-quarto-table-cell-role="th">sample_864</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>variable_1</td>
+<td>1.335571e+05</td>
+<td>4.067772e+05</td>
+<td>4.653638e+05</td>
+<td>2.327503e+05</td>
+<td>3.204984e+05</td>
+<td>9.507953e+04</td>
+<td>2.629849e+05</td>
+<td>1.677002e+05</td>
+<td>1.651118e+05</td>
+<td>...</td>
+<td>3.331851e+05</td>
+<td>4.848780e+05</td>
+<td>2.804682e+05</td>
+<td>5.179674e+05</td>
+<td>4.358776e+05</td>
+<td>3.139291e+05</td>
+<td>3.904108e+05</td>
+<td>3.532888e+05</td>
+<td>5.979247e+05</td>
+<td>4.931237e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>variable_2</td>
+<td>2.914323e+08</td>
+<td>2.058200e+08</td>
+<td>1.572093e+08</td>
+<td>1.889364e+08</td>
+<td>2.151381e+08</td>
+<td>1.980727e+08</td>
+<td>2.349494e+08</td>
+<td>1.437654e+08</td>
+<td>3.101801e+08</td>
+<td>...</td>
+<td>9.908329e+07</td>
+<td>1.128658e+08</td>
+<td>1.349937e+08</td>
+<td>1.058415e+08</td>
+<td>9.786954e+07</td>
+<td>7.953481e+07</td>
+<td>9.254447e+07</td>
+<td>1.378881e+08</td>
+<td>1.291880e+08</td>
+<td>1.421230e+08</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>variable_3</td>
+<td>1.039778e+08</td>
+<td>6.959067e+07</td>
+<td>6.546160e+07</td>
+<td>7.890295e+07</td>
+<td>1.099364e+08</td>
+<td>9.149507e+07</td>
+<td>1.177567e+08</td>
+<td>7.226901e+07</td>
+<td>1.280126e+08</td>
+<td>...</td>
+<td>5.433479e+07</td>
+<td>4.719515e+07</td>
+<td>5.444209e+07</td>
+<td>4.031031e+07</td>
+<td>5.985512e+07</td>
+<td>2.243647e+07</td>
+<td>6.748665e+07</td>
+<td>5.571944e+07</td>
+<td>8.007063e+07</td>
+<td>7.203118e+07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>variable_4</td>
+<td>1.899937e+07</td>
+<td>2.725515e+07</td>
+<td>5.049965e+07</td>
+<td>3.885274e+07</td>
+<td>3.245649e+07</td>
+<td>2.520913e+07</td>
+<td>3.618445e+07</td>
+<td>4.143107e+07</td>
+<td>2.248020e+07</td>
+<td>...</td>
+<td>3.839418e+07</td>
+<td>3.597201e+07</td>
+<td>1.600624e+07</td>
+<td>1.891379e+07</td>
+<td>2.643795e+07</td>
+<td>2.854334e+07</td>
+<td>2.003175e+07</td>
+<td>1.983767e+07</td>
+<td>1.582618e+07</td>
+<td>2.097925e+07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>variable_5</td>
+<td>1.075189e+04</td>
+<td>1.365641e+02</td>
+<td>5.717232e+03</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>3.150963e+03</td>
+<td>1.365641e+02</td>
+<td>...</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">15601</td>
+<td>variable_15602</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>4.849214e+03</td>
+<td>2.647425e+03</td>
+<td>1.365641e+02</td>
+<td>5.857132e+03</td>
+<td>...</td>
+<td>1.365641e+02</td>
+<td>1.382506e+03</td>
+<td>1.365641e+02</td>
+<td>8.669330e+03</td>
+<td>3.338606e+03</td>
+<td>1.826847e+03</td>
+<td>9.233444e+03</td>
+<td>6.235643e+03</td>
+<td>1.074344e+04</td>
+<td>9.022216e+03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15602</td>
+<td>variable_15603</td>
+<td>1.484041e+04</td>
+<td>1.365641e+02</td>
+<td>8.670437e+03</td>
+<td>1.365641e+02</td>
+<td>9.700260e+03</td>
+<td>2.808402e+03</td>
+<td>9.422814e+03</td>
+<td>1.365641e+02</td>
+<td>3.608028e+03</td>
+<td>...</td>
+<td>1.365641e+02</td>
+<td>6.552061e+03</td>
+<td>7.869005e+03</td>
+<td>6.919266e+03</td>
+<td>3.443958e+03</td>
+<td>5.542762e+03</td>
+<td>1.365641e+02</td>
+<td>7.214279e+03</td>
+<td>9.303027e+03</td>
+<td>8.189856e+03</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">15603</td>
+<td>variable_15604</td>
+<td>3.509693e+03</td>
+<td>6.338602e+03</td>
+<td>9.574115e+03</td>
+<td>1.731127e+03</td>
+<td>9.168757e+03</td>
+<td>1.365641e+02</td>
+<td>3.158676e+03</td>
+<td>7.219811e+03</td>
+<td>7.749311e+03</td>
+<td>...</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15604</td>
+<td>variable_15605</td>
+<td>1.365641e+02</td>
+<td>2.799276e+03</td>
+<td>6.296987e+03</td>
+<td>1.365641e+02</td>
+<td>4.886416e+03</td>
+<td>1.365641e+02</td>
+<td>6.012350e+03</td>
+<td>6.212321e+03</td>
+<td>5.120082e+03</td>
+<td>...</td>
+<td>6.193849e+03</td>
+<td>1.365641e+02</td>
+<td>5.575186e+03</td>
+<td>4.901934e+03</td>
+<td>5.794283e+03</td>
+<td>7.640553e+03</td>
+<td>4.356595e+03</td>
+<td>1.365641e+02</td>
+<td>9.194651e+03</td>
+<td>5.405931e+03</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">15605</td>
+<td>variable_15606</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>...</td>
+<td>8.420486e+03</td>
+<td>5.389534e+03</td>
+<td>7.218614e+03</td>
+<td>1.365641e+02</td>
+<td>3.187292e+03</td>
+<td>5.848782e+03</td>
+<td>1.157885e+04</td>
+<td>3.406270e+03</td>
+<td>1.365641e+02</td>
+<td>7.939925e+03</td>
+</tr>
+</tbody>
+</table>
+
+<p>15606 rows × 864 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="transpose-the-dataframe" class="level3" data-number="2.0.4">
+<h3 data-number="2.0.4" class="anchored" data-anchor-id="transpose-the-dataframe"><span class="header-section-number">2.0.4</span> Transpose the dataFrame</h3>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>transposed_data <span class="op">=</span> df_x.T</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>transposed_data.columns <span class="op">=</span> transposed_data.iloc[<span class="dv">0</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>transposed_data <span class="op">=</span> transposed_data[<span class="dv">1</span>:]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>transposed_data <span class="op">=</span> transposed_data.astype(<span class="bu">float</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>transposed_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">variable_1</th>
+<th data-quarto-table-cell-role="th">variable_2</th>
+<th data-quarto-table-cell-role="th">variable_3</th>
+<th data-quarto-table-cell-role="th">variable_4</th>
+<th data-quarto-table-cell-role="th">variable_5</th>
+<th data-quarto-table-cell-role="th">variable_6</th>
+<th data-quarto-table-cell-role="th">variable_7</th>
+<th data-quarto-table-cell-role="th">variable_8</th>
+<th data-quarto-table-cell-role="th">variable_9</th>
+<th data-quarto-table-cell-role="th">variable_10</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">variable_15597</th>
+<th data-quarto-table-cell-role="th">variable_15598</th>
+<th data-quarto-table-cell-role="th">variable_15599</th>
+<th data-quarto-table-cell-role="th">variable_15600</th>
+<th data-quarto-table-cell-role="th">variable_15601</th>
+<th data-quarto-table-cell-role="th">variable_15602</th>
+<th data-quarto-table-cell-role="th">variable_15603</th>
+<th data-quarto-table-cell-role="th">variable_15604</th>
+<th data-quarto-table-cell-role="th">variable_15605</th>
+<th data-quarto-table-cell-role="th">variable_15606</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">sample_1</td>
+<td>133557.109</td>
+<td>291432288.0</td>
+<td>103977776.0</td>
+<td>18999370.0</td>
+<td>10751.889000</td>
+<td>81506488.0</td>
+<td>1.365641e+02</td>
+<td>35819420.0</td>
+<td>136.564096</td>
+<td>85997.516</td>
+<td>...</td>
+<td>136.564096</td>
+<td>5500.958000</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>14840.413000</td>
+<td>3509.693000</td>
+<td>136.564096</td>
+<td>136.564096</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">sample_2</td>
+<td>406777.188</td>
+<td>205820016.0</td>
+<td>69590672.0</td>
+<td>27255152.0</td>
+<td>136.564096</td>
+<td>73695920.0</td>
+<td>1.365641e+02</td>
+<td>33806928.0</td>
+<td>136.564096</td>
+<td>99303.719</td>
+<td>...</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>6338.602000</td>
+<td>2799.276000</td>
+<td>136.564096</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">sample_3</td>
+<td>465363.813</td>
+<td>157209296.0</td>
+<td>65461600.0</td>
+<td>50499648.0</td>
+<td>5717.232000</td>
+<td>39208156.0</td>
+<td>1.365641e+02</td>
+<td>48728544.0</td>
+<td>136.564096</td>
+<td>162395.547</td>
+<td>...</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>8670.437000</td>
+<td>9574.115000</td>
+<td>6296.987000</td>
+<td>136.564096</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">sample_4</td>
+<td>232750.344</td>
+<td>188936448.0</td>
+<td>78902952.0</td>
+<td>38852740.0</td>
+<td>136.564096</td>
+<td>48073508.0</td>
+<td>1.365641e+02</td>
+<td>34050052.0</td>
+<td>136.564096</td>
+<td>87778.508</td>
+<td>...</td>
+<td>136.564096</td>
+<td>14189.320000</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>1731.127000</td>
+<td>136.564096</td>
+<td>136.564096</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">sample_5</td>
+<td>320498.406</td>
+<td>215138112.0</td>
+<td>109936376.0</td>
+<td>32456494.0</td>
+<td>136.564096</td>
+<td>57907084.0</td>
+<td>1.365641e+02</td>
+<td>43285176.0</td>
+<td>136.564096</td>
+<td>119196.375</td>
+<td>...</td>
+<td>136.564096</td>
+<td>7917.235000</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>9700.260000</td>
+<td>9168.757000</td>
+<td>4886.416000</td>
+<td>136.564096</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">sample_860</td>
+<td>313929.063</td>
+<td>79534808.0</td>
+<td>22436468.0</td>
+<td>28543338.0</td>
+<td>136.564096</td>
+<td>57903016.0</td>
+<td>3.734570e+07</td>
+<td>40742204.0</td>
+<td>136.564096</td>
+<td>93482.063</td>
+<td>...</td>
+<td>2349.178000</td>
+<td>5626.164000</td>
+<td>10775.031000</td>
+<td>136.564096</td>
+<td>2095.552000</td>
+<td>1826.847000</td>
+<td>5542.762000</td>
+<td>136.564096</td>
+<td>7640.553000</td>
+<td>5848.782000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">sample_861</td>
+<td>390410.813</td>
+<td>92544472.0</td>
+<td>67486648.0</td>
+<td>20031750.0</td>
+<td>136.564096</td>
+<td>55365204.0</td>
+<td>5.099802e+07</td>
+<td>58647736.0</td>
+<td>136.564096</td>
+<td>157648.281</td>
+<td>...</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>2965.998000</td>
+<td>6135.898000</td>
+<td>9233.444000</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>4356.595000</td>
+<td>11578.846000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">sample_862</td>
+<td>353288.781</td>
+<td>137888112.0</td>
+<td>55719440.0</td>
+<td>19837670.0</td>
+<td>136.564096</td>
+<td>59020392.0</td>
+<td>5.731548e+07</td>
+<td>44283088.0</td>
+<td>136.564096</td>
+<td>115826.359</td>
+<td>...</td>
+<td>2515.764000</td>
+<td>12990.207000</td>
+<td>4949.809000</td>
+<td>6428.875000</td>
+<td>7008.433000</td>
+<td>6235.643000</td>
+<td>7214.279000</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>3406.270000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">sample_863</td>
+<td>597924.688</td>
+<td>129187984.0</td>
+<td>80070632.0</td>
+<td>15826181.0</td>
+<td>136.564096</td>
+<td>68727808.0</td>
+<td>5.631096e+07</td>
+<td>47254052.0</td>
+<td>136.564096</td>
+<td>70187.469</td>
+<td>...</td>
+<td>2603.684000</td>
+<td>7746.302000</td>
+<td>3995.213000</td>
+<td>4718.577000</td>
+<td>8226.846000</td>
+<td>10743.437000</td>
+<td>9303.027000</td>
+<td>136.564096</td>
+<td>9194.651000</td>
+<td>136.564096</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">sample_864</td>
+<td>493123.719</td>
+<td>142123024.0</td>
+<td>72031176.0</td>
+<td>20979250.0</td>
+<td>136.564096</td>
+<td>40610380.0</td>
+<td>6.269296e+07</td>
+<td>51462672.0</td>
+<td>136.564096</td>
+<td>248897.828</td>
+<td>...</td>
+<td>136.564096</td>
+<td>12626.373000</td>
+<td>136.564096</td>
+<td>136.564096</td>
+<td>5338.026000</td>
+<td>9022.216000</td>
+<td>8189.856000</td>
+<td>136.564096</td>
+<td>5405.931000</td>
+<td>7939.925000</td>
+</tr>
+</tbody>
+</table>
+
+<p>863 rows × 15606 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="load-the-target-variable" class="level3" data-number="2.0.5">
+<h3 data-number="2.0.5" class="anchored" data-anchor-id="load-the-target-variable"><span class="header-section-number">2.0.5</span> Load the target variable</h3>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_y <span class="op">=</span> pd.read_csv(<span class="st">"C:/Users/nnamd/Documents/data/machine_learning/sandbox_3/sample_metadata_for_project_final.csv"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sample_name</th>
+<th data-quarto-table-cell-role="th">sample_label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>sample_1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>sample_2</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>sample_3</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>sample_4</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>sample_5</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">858</td>
+<td>sample_860</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">859</td>
+<td>sample_861</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">860</td>
+<td>sample_862</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">861</td>
+<td>sample_863</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">862</td>
+<td>sample_864</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>863 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="feature-scaling-standardization" class="level3" data-number="2.0.6">
+<h3 data-number="2.0.6" class="anchored" data-anchor-id="feature-scaling-standardization"><span class="header-section-number">2.0.6</span> Feature scaling (standardization)</h3>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>transposed_data_scaled <span class="op">=</span> StandardScaler().fit_transform(transposed_data)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>transposed_data_scaled</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>array([[-0.94348301,  3.37913141,  1.69421238, ...,  0.41132448,
+        -1.00727398, -0.97147979],
+       [-0.11669789,  1.60487321,  0.40754899, ...,  1.3182179 ,
+        -0.28522942, -0.97147979],
+       [ 0.06058977,  0.59744791,  0.25305136, ...,  2.35546068,
+         0.66324088, -0.97147979],
+       ...,
+       [-0.27855795,  0.19702905, -0.11147136, ..., -0.6700353 ,
+        -1.00727398, -0.0521259 ],
+       [ 0.46172925,  0.0167246 ,  0.79967799, ..., -0.6700353 ,
+         1.44899712, -0.97147979],
+       [ 0.1445934 ,  0.28479482,  0.4988654 , ..., -0.6700353 ,
+         0.42161424,  1.22261668]])</code></pre>
+</div>
+</div>
+</section>
+<section id="using-my-pca-code" class="level3" data-number="2.0.7">
+<h3 data-number="2.0.7" class="anchored" data-anchor-id="using-my-pca-code"><span class="header-section-number">2.0.7</span> Using my PCA code</h3>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pca2 <span class="op">=</span> PCAAnalysis(transposed_data_scaled)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pca2.perform_pca()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>pca2.diplay_result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvalues (Variance):
+[ 1.06606786e+03  7.65144773e+02  5.49774198e+02 ... -6.21941378e-14
+ -6.38587421e-14 -1.07737875e-13]
+
+Percent Variance Explained:
+[ 6.82322542e+00  4.89720725e+00  3.51875655e+00 ... -3.98065298e-16
+ -4.08719376e-16 -6.89561925e-16]
+
+Principal Components (Eigenvectors):
+[[ 0.00654843  0.00717741 -0.00215395 ...  0.00037667  0.00018435
+  -0.02024689]
+ [ 0.00698362 -0.01287274 -0.0242181  ... -0.00482655  0.00073464
+  -0.00598793]
+ [ 0.00636806 -0.01518148 -0.01856863 ...  0.00087039  0.00172927
+   0.00228715]
+ ...
+ [ 0.00014869 -0.01233943 -0.00248012 ...  0.00596605  0.00881624
+   0.01140568]
+ [ 0.00448358  0.0108511  -0.0054498  ... -0.00264049 -0.00652011
+  -0.01008767]
+ [ 0.00738502  0.01581409  0.00019945 ...  0.00394409 -0.00195743
+  -0.00234301]]
+
+Scores (Projected Data):
+[[ 1.19586936e+00 -3.46756417e+01 -2.25660913e+01 ... -7.27889971e-15
+   8.89045781e-15 -9.15153370e-15]
+ [-5.62198845e+01 -1.37074333e+01 -5.17698188e+00 ...  6.10622664e-15
+  -7.44890261e-15 -8.86096752e-15]
+ [ 9.82985419e+00 -2.87003853e+01 -9.13129836e+00 ...  4.87457297e-16
+   1.02973186e-14 -5.53723734e-15]
+ ...
+ [-1.17328307e+01  3.13122100e+01  1.39677083e+01 ...  2.72004641e-15
+   2.22044605e-15  2.26901831e-15]
+ [ 4.53416852e+01  2.57901501e+01  1.93305144e+01 ...  2.19615992e-15
+   7.79931675e-15 -1.82666382e-15]
+ [ 1.66062582e+01  4.33861314e+01  3.99768953e+01 ... -1.82145965e-15
+  -6.92501612e-15  4.96824804e-15]]</code></pre>
+</div>
+</div>
+</section>
+<section id="using-my-pca-code-scree-plot" class="level3" data-number="2.0.8">
+<h3 data-number="2.0.8" class="anchored" data-anchor-id="using-my-pca-code-scree-plot"><span class="header-section-number">2.0.8</span> Using my PCA code: Scree plot</h3>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pca2.scree_plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="pca_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="using-my-pca-code-scores-plot" class="level3" data-number="2.0.9">
+<h3 data-number="2.0.9" class="anchored" data-anchor-id="using-my-pca-code-scores-plot"><span class="header-section-number">2.0.9</span> Using my PCA code: Scores plot</h3>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pca2.scores_plot(group_by_target<span class="op">=</span><span class="va">True</span>, target_data<span class="op">=</span>df_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="pca_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="sklearn-pca" class="level3" data-number="2.0.10">
+<h3 data-number="2.0.10" class="anchored" data-anchor-id="sklearn-pca"><span class="header-section-number">2.0.10</span> Sklearn PCA</h3>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying PCA</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>pca_result <span class="op">=</span> pca.fit_transform(transposed_data_scaled)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracting PCA components, explained variance, and explained variance ratio</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>components <span class="op">=</span> pca.components_</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>explained_variance <span class="op">=</span> pca.explained_variance_</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>explained_variance_ratio <span class="op">=</span> pca.explained_variance_ratio_</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying results</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>components[<span class="dv">0</span>:<span class="dv">20</span>], explained_variance[<span class="dv">0</span>:<span class="dv">20</span>], explained_variance_ratio[<span class="dv">0</span>:<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>(array([[-0.00654843, -0.00698362, -0.00636806, ..., -0.00014869,
+         -0.00448358, -0.00738502],
+        [-0.00717741,  0.01287274,  0.01518148, ...,  0.01233943,
+         -0.0108511 , -0.01581409],
+        [-0.00215395, -0.0242181 , -0.01856863, ..., -0.00248012,
+         -0.0054498 ,  0.00019945],
+        ...,
+        [ 0.00482643, -0.0031872 ,  0.00751572, ...,  0.00602303,
+          0.01190958,  0.00927212],
+        [ 0.01724092, -0.00814579,  0.00257728, ..., -0.00154193,
+          0.00047157,  0.00921824],
+        [ 0.00544743, -0.0055431 , -0.02378863, ..., -0.00099243,
+          0.00801784,  0.00164786]]),
+ array([1066.06786339,  765.14477332,  549.77419754,  390.74299144,
+         365.8793712 ,  342.02570847,  341.65618198,  289.92102159,
+         274.96769549,  263.61187815,  233.47738021,  190.8811226 ,
+         184.44615598,  167.13978473,  162.717066  ,  157.96569923,
+         133.67444707,  124.08038122,  115.05657412,  101.0595343 ]),
+ array([0.06823225, 0.04897207, 0.03518757, 0.02500898, 0.02341762,
+        0.0218909 , 0.02186725, 0.01855601, 0.01759894, 0.01687213,
+        0.01494341, 0.01221709, 0.01180523, 0.01069756, 0.01041449,
+        0.01011038, 0.00855566, 0.0079416 , 0.00736404, 0.00646818]))</code></pre>
+</div>
+</div>
+</section>
+<section id="sklearn-pca-scree-plot" class="level3" data-number="2.0.11">
+<h3 data-number="2.0.11" class="anchored" data-anchor-id="sklearn-pca-scree-plot"><span class="header-section-number">2.0.11</span> Sklearn PCA: Scree plot</h3>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_scree(save_path<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    num_components <span class="op">=</span> <span class="bu">len</span>(explained_variance_ratio)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot only the first 10 principal components if there are more than 10</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> num_components <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        components_to_plot <span class="op">=</span> explained_variance_ratio[:<span class="dv">10</span>]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        x_ticks <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        components_to_plot <span class="op">=</span> explained_variance_ratio</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        x_ticks <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, num_components <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_ticks, components_to_plot<span class="op">*</span><span class="dv">100</span>, <span class="st">'o-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'Scree Plot - Percentage Variance Explained'</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Principal Component'</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Percentage Variance Explained (%)'</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    plt.ylim(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    plt.xticks(x_ticks)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    plt.grid(<span class="va">True</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> save_path:</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        plt.savefig(save_path, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, dpi<span class="op">=</span><span class="dv">300</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>plot_scree()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="pca_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="sklearn-pca-extract-the-top-6-principal-components-and-plot-pc1-and-pc2" class="level3" data-number="2.0.12">
+<h3 data-number="2.0.12" class="anchored" data-anchor-id="sklearn-pca-extract-the-top-6-principal-components-and-plot-pc1-and-pc2"><span class="header-section-number">2.0.12</span> Sklearn PCA: extract the top 6 principal components and plot PC1 and PC2</h3>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert PCA scores to a DataFrame</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>pca_df <span class="op">=</span> pd.DataFrame(data<span class="op">=</span>pca_result[:,<span class="dv">0</span>:<span class="dv">6</span>], columns<span class="op">=</span>[<span class="st">'PC1'</span>, <span class="st">'PC2'</span>, <span class="st">'PC3'</span>, <span class="st">'PC4'</span>, <span class="st">'PC5'</span>, <span class="st">'PC6'</span>])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>pca_df[<span class="st">'Target'</span>] <span class="op">=</span> df_y[<span class="st">'sample_label'</span>]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_scores(save_path<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#plt.scatter(pca_result[:, 0], pca_result[:, 1], alpha=0.7, edgecolors='k')</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    colors <span class="op">=</span> {<span class="dv">0</span>: <span class="st">'blue'</span>, <span class="dv">1</span>: <span class="st">'red'</span>}</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> target_value, group <span class="kw">in</span> pca_df.groupby(<span class="st">'Target'</span>):</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        plt.scatter(group[<span class="st">'PC1'</span>], group[<span class="st">'PC2'</span>], color<span class="op">=</span>colors[target_value],</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>                    label<span class="op">=</span><span class="ss">f'Target </span><span class="sc">{</span>target_value<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'Scores Plot (PC1 vs PC2)'</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'PC1 (</span><span class="sc">{}</span><span class="st">%)'</span>.<span class="bu">format</span>(<span class="bu">round</span>(explained_variance_ratio[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">100</span>, <span class="dv">2</span>)))</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'PC2 (</span><span class="sc">{}</span><span class="st">%)'</span>.<span class="bu">format</span>(<span class="bu">round</span>(explained_variance_ratio[<span class="dv">1</span>] <span class="op">*</span> <span class="dv">100</span>, <span class="dv">2</span>)))</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    plt.grid(<span class="va">True</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> save_path:</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        plt.savefig(save_path, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, dpi<span class="op">=</span><span class="dv">300</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>plot_scores()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="pca_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="save-the-dataframe-of-pc1-pc6-for-logistic-regression" class="level3" data-number="2.0.13">
+<h3 data-number="2.0.13" class="anchored" data-anchor-id="save-the-dataframe-of-pc1-pc6-for-logistic-regression"><span class="header-section-number">2.0.13</span> Save the dataframe of PC1-PC6 for logistic regression</h3>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pca_df[<span class="st">'samples'</span>] <span class="op">=</span> transposed_data.index</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>pca_df.to_csv(<span class="st">'PCA_new_dimensions.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>pca_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">PC1</th>
+<th data-quarto-table-cell-role="th">PC2</th>
+<th data-quarto-table-cell-role="th">PC3</th>
+<th data-quarto-table-cell-role="th">PC4</th>
+<th data-quarto-table-cell-role="th">PC5</th>
+<th data-quarto-table-cell-role="th">PC6</th>
+<th data-quarto-table-cell-role="th">Target</th>
+<th data-quarto-table-cell-role="th">samples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-1.195869</td>
+<td>34.675642</td>
+<td>-22.566091</td>
+<td>-10.124487</td>
+<td>5.437070</td>
+<td>-27.289066</td>
+<td>0</td>
+<td>sample_1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>56.219885</td>
+<td>13.707433</td>
+<td>-5.176982</td>
+<td>-17.500171</td>
+<td>1.755895</td>
+<td>-25.040687</td>
+<td>1</td>
+<td>sample_2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-9.829854</td>
+<td>28.700385</td>
+<td>-9.131298</td>
+<td>-8.827665</td>
+<td>-17.923073</td>
+<td>-37.253751</td>
+<td>0</td>
+<td>sample_3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>63.601822</td>
+<td>7.700061</td>
+<td>-6.719630</td>
+<td>-26.422956</td>
+<td>-22.782805</td>
+<td>-22.051176</td>
+<td>1</td>
+<td>sample_4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-9.944483</td>
+<td>32.471231</td>
+<td>-27.308476</td>
+<td>-18.768296</td>
+<td>-26.321906</td>
+<td>-25.460404</td>
+<td>0</td>
+<td>sample_5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">858</td>
+<td>27.400601</td>
+<td>-41.364723</td>
+<td>26.597015</td>
+<td>-14.626021</td>
+<td>14.450297</td>
+<td>-21.922266</td>
+<td>1</td>
+<td>sample_860</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">859</td>
+<td>-50.426578</td>
+<td>-33.143071</td>
+<td>26.495926</td>
+<td>-5.602025</td>
+<td>14.432004</td>
+<td>-28.201209</td>
+<td>0</td>
+<td>sample_861</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">860</td>
+<td>11.732831</td>
+<td>-31.312210</td>
+<td>13.967708</td>
+<td>-13.244061</td>
+<td>22.363992</td>
+<td>-18.355105</td>
+<td>1</td>
+<td>sample_862</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">861</td>
+<td>-45.341685</td>
+<td>-25.790150</td>
+<td>19.330514</td>
+<td>-2.792202</td>
+<td>24.088169</td>
+<td>-22.854234</td>
+<td>0</td>
+<td>sample_863</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">862</td>
+<td>-16.606258</td>
+<td>-43.386131</td>
+<td>39.976895</td>
+<td>-23.290725</td>
+<td>-2.533932</td>
+<td>-19.645929</td>
+<td>1</td>
+<td>sample_864</td>
+</tr>
+</tbody>
+</table>
+
+<p>863 rows × 8 columns</p>
+</div>
+</div>
+</div>
+<p><br> <br></p>
+</section>
+<section id="result-summary" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="result-summary"><span class="header-section-number">2.1</span> Result summary:</h2>
+<section id="the-result-when-my-code-that-was-built-from-scratch-was-used-for-the-analysis-was-similar-to-the-result-gotten-using-the-sklearn-pca-package." class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="the-result-when-my-code-that-was-built-from-scratch-was-used-for-the-analysis-was-similar-to-the-result-gotten-using-the-sklearn-pca-package."><span class="header-section-number">2.1.1</span> - The result when my code (that was built from scratch) was used for the analysis was similar to the result gotten using the Sklearn PCA package.</h3>
+</section>
+<section id="elbow-method-was-used-to-select-principal-components-pc1-pc6-for-logsitic-regression-and-ann." class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="elbow-method-was-used-to-select-principal-components-pc1-pc6-for-logsitic-regression-and-ann."><span class="header-section-number">2.1.2</span> - Elbow method was used to select principal components (PC1-PC6) for logsitic regression and ANN.</h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../machine_learning/background.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Background</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../machine_learning/logistic_regression.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

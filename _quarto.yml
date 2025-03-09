@@ -7,9 +7,12 @@ book:
   chapters:
     - index.qmd
     - projects.qmd
-    - part: "Machine Learning"
+    - part: "Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch"
       chapters: 
-        - machine_learning/background.qmd
+        - machine_learning/background.ipynb
+        - machine_learning/pca.ipynb
+        - machine_learning/logistic_regression.ipynb
+        - machine_learning/ann.ipynb
     - part: "Single-Cell RNASeq"
       chapters:
         - single_cell_rnaseq/background.qmd

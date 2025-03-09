@@ -1,8 +1,10 @@
 # Projects {.unnumbered}
 
-### [Machine Learning](https://chinaza11.github.io/machine_learning/background.html)
+### [Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch](https://chinaza11.github.io/machine_learning/background.html)
 
 Placeholder for a descriptive image
+
+### Machine Learning: Placeholder for another project
 
 ### [Single Cell RNASeq](https://chinaza11.github.io/single_cell_rnaseq/background.html)
 

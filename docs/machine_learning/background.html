@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Chinaza Nnamdi Portfolio - Background</title>
+<title>Chinaza Nnamdi Portfolio - 1&nbsp; Background</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../single_cell_rnaseq/background.html" rel="next">
+<link href="../machine_learning/pca.html" rel="next">
 <link href="../projects.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -61,6 +95,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -74,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../machine_learning/background.html">Machine Learning</a></li><li class="breadcrumb-item"><a href="../machine_learning/background.html">Background</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../machine_learning/background.html">Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch</a></li><li class="breadcrumb-item"><a href="../machine_learning/background.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Background</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -114,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Machine Learning</span></a>
+ <span class="menu-text">Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -123,7 +160,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../machine_learning/background.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Background</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Background</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/pca.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principal Component Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/logistic_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/ann.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Artificial Neural Network</span></span></a>
   </div>
 </li>
       </ul>
@@ -202,14 +257,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#about-data" id="toc-about-data" class="nav-link active" data-scroll-target="#about-data"><span class="header-section-number">1.1</span> About data:</a>
+  <ul class="collapse">
+  <li><a href="#independent-variables" id="toc-independent-variables" class="nav-link" data-scroll-target="#independent-variables"><span class="header-section-number">1.1.1</span> Independent variables</a></li>
+  <li><a href="#target-variables" id="toc-target-variables" class="nav-link" data-scroll-target="#target-variables"><span class="header-section-number">1.1.2</span> Target variables</a></li>
+  </ul></li>
+  <li><a href="#project-goals" id="toc-project-goals" class="nav-link" data-scroll-target="#project-goals"><span class="header-section-number">1.2</span> Project Goals:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Background</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Background</span></h1>
 </div>
 
 
@@ -224,9 +290,422 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>I will be adding the capstone project from a machine learning course here.</p>
+<p><big> This was the capstone project for a machine learning class I took. The class covered the mathematical foundation of several machine learning models and during the course of the class, I had to build several machine learning models from scratch including principal component analysis (PCA), linear regression, logistic regression, and artificial neural network (ANN) models.</big></p><big>
+<p>For the capstone project, I was given a dataset by the instructor and had to evaluate the models I built during the course of the class on the dataset. I also had to apply existing Scikit-learn packages that implement these models. This allowed me to validate the results I got using the models I built from scratch by comparing their results to those obtained using Scikit-learn packages.</p>
+<p>This class gave me a solid background and introduction to machine learning models.</p>
+</big><p><big></big></p>
+<p><br></p>
+<section id="about-data" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="about-data"><span class="header-section-number">1.1</span> About data:</h2>
+<p><big> The data comprised 863 samples, 15606 independent variables, and two classes of target variables (0/1). </big></p>
+<p><br></p>
+<section id="independent-variables" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="independent-variables"><span class="header-section-number">1.1.1</span> Independent variables</h3>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df_x <span class="op">=</span> pd.read_csv(<span class="st">"C:/Users/nnamd/Documents/data/machine_learning/sandbox_3/sample_data_for_project_final.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
 
 
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">sample_1</th>
+<th data-quarto-table-cell-role="th">sample_2</th>
+<th data-quarto-table-cell-role="th">sample_3</th>
+<th data-quarto-table-cell-role="th">sample_4</th>
+<th data-quarto-table-cell-role="th">sample_5</th>
+<th data-quarto-table-cell-role="th">sample_6</th>
+<th data-quarto-table-cell-role="th">sample_7</th>
+<th data-quarto-table-cell-role="th">sample_8</th>
+<th data-quarto-table-cell-role="th">sample_9</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">sample_855</th>
+<th data-quarto-table-cell-role="th">sample_856</th>
+<th data-quarto-table-cell-role="th">sample_857</th>
+<th data-quarto-table-cell-role="th">sample_858</th>
+<th data-quarto-table-cell-role="th">sample_859</th>
+<th data-quarto-table-cell-role="th">sample_860</th>
+<th data-quarto-table-cell-role="th">sample_861</th>
+<th data-quarto-table-cell-role="th">sample_862</th>
+<th data-quarto-table-cell-role="th">sample_863</th>
+<th data-quarto-table-cell-role="th">sample_864</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>variable_1</td>
+<td>1.335571e+05</td>
+<td>4.067772e+05</td>
+<td>4.653638e+05</td>
+<td>2.327503e+05</td>
+<td>3.204984e+05</td>
+<td>9.507953e+04</td>
+<td>2.629849e+05</td>
+<td>1.677002e+05</td>
+<td>1.651118e+05</td>
+<td>...</td>
+<td>3.331851e+05</td>
+<td>4.848780e+05</td>
+<td>2.804682e+05</td>
+<td>5.179674e+05</td>
+<td>4.358776e+05</td>
+<td>3.139291e+05</td>
+<td>3.904108e+05</td>
+<td>3.532888e+05</td>
+<td>5.979247e+05</td>
+<td>4.931237e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>variable_2</td>
+<td>2.914323e+08</td>
+<td>2.058200e+08</td>
+<td>1.572093e+08</td>
+<td>1.889364e+08</td>
+<td>2.151381e+08</td>
+<td>1.980727e+08</td>
+<td>2.349494e+08</td>
+<td>1.437654e+08</td>
+<td>3.101801e+08</td>
+<td>...</td>
+<td>9.908329e+07</td>
+<td>1.128658e+08</td>
+<td>1.349937e+08</td>
+<td>1.058415e+08</td>
+<td>9.786954e+07</td>
+<td>7.953481e+07</td>
+<td>9.254447e+07</td>
+<td>1.378881e+08</td>
+<td>1.291880e+08</td>
+<td>1.421230e+08</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>variable_3</td>
+<td>1.039778e+08</td>
+<td>6.959067e+07</td>
+<td>6.546160e+07</td>
+<td>7.890295e+07</td>
+<td>1.099364e+08</td>
+<td>9.149507e+07</td>
+<td>1.177567e+08</td>
+<td>7.226901e+07</td>
+<td>1.280126e+08</td>
+<td>...</td>
+<td>5.433479e+07</td>
+<td>4.719515e+07</td>
+<td>5.444209e+07</td>
+<td>4.031031e+07</td>
+<td>5.985512e+07</td>
+<td>2.243647e+07</td>
+<td>6.748665e+07</td>
+<td>5.571944e+07</td>
+<td>8.007063e+07</td>
+<td>7.203118e+07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>variable_4</td>
+<td>1.899937e+07</td>
+<td>2.725515e+07</td>
+<td>5.049965e+07</td>
+<td>3.885274e+07</td>
+<td>3.245649e+07</td>
+<td>2.520913e+07</td>
+<td>3.618445e+07</td>
+<td>4.143107e+07</td>
+<td>2.248020e+07</td>
+<td>...</td>
+<td>3.839418e+07</td>
+<td>3.597201e+07</td>
+<td>1.600624e+07</td>
+<td>1.891379e+07</td>
+<td>2.643795e+07</td>
+<td>2.854334e+07</td>
+<td>2.003175e+07</td>
+<td>1.983767e+07</td>
+<td>1.582618e+07</td>
+<td>2.097925e+07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>variable_5</td>
+<td>1.075189e+04</td>
+<td>1.365641e+02</td>
+<td>5.717232e+03</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>3.150963e+03</td>
+<td>1.365641e+02</td>
+<td>...</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">15601</td>
+<td>variable_15602</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>4.849214e+03</td>
+<td>2.647425e+03</td>
+<td>1.365641e+02</td>
+<td>5.857132e+03</td>
+<td>...</td>
+<td>1.365641e+02</td>
+<td>1.382506e+03</td>
+<td>1.365641e+02</td>
+<td>8.669330e+03</td>
+<td>3.338606e+03</td>
+<td>1.826847e+03</td>
+<td>9.233444e+03</td>
+<td>6.235643e+03</td>
+<td>1.074344e+04</td>
+<td>9.022216e+03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15602</td>
+<td>variable_15603</td>
+<td>1.484041e+04</td>
+<td>1.365641e+02</td>
+<td>8.670437e+03</td>
+<td>1.365641e+02</td>
+<td>9.700260e+03</td>
+<td>2.808402e+03</td>
+<td>9.422814e+03</td>
+<td>1.365641e+02</td>
+<td>3.608028e+03</td>
+<td>...</td>
+<td>1.365641e+02</td>
+<td>6.552061e+03</td>
+<td>7.869005e+03</td>
+<td>6.919266e+03</td>
+<td>3.443958e+03</td>
+<td>5.542762e+03</td>
+<td>1.365641e+02</td>
+<td>7.214279e+03</td>
+<td>9.303027e+03</td>
+<td>8.189856e+03</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">15603</td>
+<td>variable_15604</td>
+<td>3.509693e+03</td>
+<td>6.338602e+03</td>
+<td>9.574115e+03</td>
+<td>1.731127e+03</td>
+<td>9.168757e+03</td>
+<td>1.365641e+02</td>
+<td>3.158676e+03</td>
+<td>7.219811e+03</td>
+<td>7.749311e+03</td>
+<td>...</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15604</td>
+<td>variable_15605</td>
+<td>1.365641e+02</td>
+<td>2.799276e+03</td>
+<td>6.296987e+03</td>
+<td>1.365641e+02</td>
+<td>4.886416e+03</td>
+<td>1.365641e+02</td>
+<td>6.012350e+03</td>
+<td>6.212321e+03</td>
+<td>5.120082e+03</td>
+<td>...</td>
+<td>6.193849e+03</td>
+<td>1.365641e+02</td>
+<td>5.575186e+03</td>
+<td>4.901934e+03</td>
+<td>5.794283e+03</td>
+<td>7.640553e+03</td>
+<td>4.356595e+03</td>
+<td>1.365641e+02</td>
+<td>9.194651e+03</td>
+<td>5.405931e+03</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">15605</td>
+<td>variable_15606</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>1.365641e+02</td>
+<td>...</td>
+<td>8.420486e+03</td>
+<td>5.389534e+03</td>
+<td>7.218614e+03</td>
+<td>1.365641e+02</td>
+<td>3.187292e+03</td>
+<td>5.848782e+03</td>
+<td>1.157885e+04</td>
+<td>3.406270e+03</td>
+<td>1.365641e+02</td>
+<td>7.939925e+03</td>
+</tr>
+</tbody>
+</table>
+
+<p>15606 rows × 864 columns</p>
+</div>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="target-variables" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="target-variables"><span class="header-section-number">1.1.2</span> Target variables</h3>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_y <span class="op">=</span> pd.read_csv(<span class="st">"C:/Users/nnamd/Documents/data/machine_learning/sandbox_3/sample_metadata_for_project_final.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sample_name</th>
+<th data-quarto-table-cell-role="th">sample_label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>sample_1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>sample_2</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>sample_3</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>sample_4</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>sample_5</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">858</td>
+<td>sample_860</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">859</td>
+<td>sample_861</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">860</td>
+<td>sample_862</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">861</td>
+<td>sample_863</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">862</td>
+<td>sample_864</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>863 rows × 2 columns</p>
+</div>
+</div>
+</div>
+<p><br></p>
+</section>
+</section>
+<section id="project-goals" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="project-goals"><span class="header-section-number">1.2</span> Project Goals:</h2>
+<p><big> =&gt; Dimensionality reduction of data using PCA and extraction of interesting principal components.</big></p><big>
+<p>=&gt; Using extracted principal components to build logistic regression and ANN models to predict the target variables in the data.</p>
+<p><br></p>
+<ul>
+<li>The next pages will show the application of PCA, logistic regression, and ANN models.</li>
+</ul>
+</big><p><big></big></p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -469,8 +948,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../single_cell_rnaseq/background.html" class="pagination-link">
-        <span class="nav-page-text">Background</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../machine_learning/pca.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principal Component Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
