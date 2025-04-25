@@ -18,7 +18,7 @@
     "href": "index.html#work-experience",
     "title": "Chinaza Nnamdi Portfolio",
     "section": "Work Experience",
-    "text": "Work Experience\nBioinformatics Research Assistant (Aug. 2023 – Present)\nDepartment of Bioinformatics and Computational Biology, University of North Carolina, Charlotte, North Carolina\n\nBuilding a pipeline for structural variant genotyping using pangenome graphs, integrating tools like Vgtool kit, Minimap2, Cactus, etc.\nEmployed statistical and machine learning methods such as Wald’s test, hypergeometric test, PCA to uncover novel genetic elements and the molecular mechanisms underlying biological processes. Some of these biological processes were the therapeutic effects of drugs and stress effects.\nUtilized computational tools to construct a pan-transcriptome that helped uncover 70% more differentially expressed genes compared to when the conventional pipeline that involves a single reference genome was used.\nDeveloped a pipeline for bulk-RNA seq analysis with a pan-transcriptome as the reference sequence and processed datasets of over 8 TB in size.\nEmployed R (tidyverse, UpSetR, DESeq2, glmmSeq, clusterProfiler) and Python (pandas, subprocess, concurrent, bs4, requests, matplotlib) packages for data processing and visualization.\nExpedited the execution of computational-intensive tasks (e.g., genome indexing, alignment) by utilizing HPC environments, optimizing time-consuming tasks through parallel processing.\nDeveloped a workflow and documentation for the easy utilization of a legacy bioinformatic tool, reducing setup and execution time by 50%.\n\nResearch Assistant (Feb. 2022 – Jul. 2023)\nInstitute of Plant Breeding, Genetics & Genomics, University of Georgia, Georgia\n\nLeveraged basic and advanced QTL mapping techniques in R to analyze large peanut datasets, leading to the discovery of novel loci associated with yield and supporting the Georgia peanut breeding program.\nPerformed statistical analysis of peanut phenotypic data in R, employing ANOVA and correlation tests to derive insights."
+    "text": "Work Experience\nBioinformatics Research Assistant (Aug. 2023 – Present)\nDepartment of Bioinformatics and Computational Biology, University of North Carolina, Charlotte, North Carolina\n\nBuilding a pipeline for structural variant genotyping using pangenome graphs, integrating tools like Vgtool kit, Minimap2, Cactus, etc.\nEmployed statistical and machine learning methods such as Wald’s test, hypergeometric test, PCA to uncover novel genetic elements and the molecular mechanisms underlying biological processes. Some of these biological processes were the therapeutic effects of nutritional supplements and stress effects.\nUtilized computational tools to construct a pan-transcriptome that helped uncover 70% more differentially expressed genes compared to when the conventional pipeline that involves a single reference genome was used.\nDeveloped a pipeline for bulk-RNA seq analysis with a pan-transcriptome as the reference sequence and processed datasets of over 8 TB in size.\nEmployed R (tidyverse, UpSetR, DESeq2, glmmSeq, clusterProfiler) and Python (pandas, subprocess, concurrent, bs4, requests, matplotlib) packages for data processing and visualization.\nExpedited the execution of computational-intensive tasks by utilizing HPC environments, optimizing time-consuming tasks through parallel processing.\nDeveloped a workflow and documentation for the easy utilization of a legacy bioinformatic tool, reducing setup and execution time by 50%."
   },
   {
     "objectID": "index.html#education",
@@ -39,7 +39,7 @@
     "href": "index.html#publication",
     "title": "Chinaza Nnamdi Portfolio",
     "section": "Publication",
-    "text": "Publication\n\nNnamdi C.D., Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in Sorghum bicolor. bioRxiv. https://doi.org/10.1101/2024.12.17.626333\nEl‐Khodor B.F., Reid, R.W., Dominique, A., Sanders, A., Lambirth, K., Nnamdi C.D., et al. 2025. Therapeutic effects of bovine thymus extract on Caenorhabditis elegans. FASEB [Manuscript under preparation]."
+    "text": "Publication\n\nNnamdi C.D., Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in Sorghum bicolor. bioRxiv. https://doi.org/10.1101/2024.12.17.626333\nEl‐Khodor B.F., Reid, R.W., Dominique, A., Sanders, A., Lambirth, K., Nnamdi C.D., et al. 2025. Investigating the molecular mechanisms underpinning the therapeutic effects of bovine thymus extract in Caenorhabditis elegans. [Manuscript under preparation]."
   },
   {
     "objectID": "projects.html",
@@ -74,7 +74,7 @@
     "href": "single_cell_rnaseq/background.html",
     "title": "Background",
     "section": "",
-    "text": "I have seen a trend where a lot of recent bioinformatics jobs require experience analyzing single-cell RNASeq data. This project will document my experience learning and implementing methodologies for single-cell RNASeq data analysis."
+    "text": "This project will document my experience learning and implementing methodologies for single-cell RNASeq data analysis."
   },
   {
     "objectID": "sv_genotyping/background.html",
