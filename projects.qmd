@@ -2,24 +2,6 @@
 
 ### [Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch](https://chinaza11.github.io/machine_learning/background.html)
 
-Placeholder for a descriptive image
-
-### Machine Learning: Placeholder for another project
-
-### [Single Cell RNASeq](https://chinaza11.github.io/single_cell_rnaseq/background.html)
-
-Placeholder for a descriptive image
-
 ### [Structural Variant Genotyping with a Pangenome](https://chinaza11.github.io/sv_genotyping/background.html)
 
-Placeholder for a descriptive image
-
 ### [Bulk RNASeq with a Pan-transcriptome](https://chinaza11.github.io/bulk_rnaseq_with_pantranscriptome/background.html)
-
-Placeholder for a descriptive image
-
-### [Capstone Project for Computational Molecular Evolution Course](https://chinaza11.github.io/capstone_for_cmr_course/background.html)
-
-Placeholder for a descriptive image
-
-### 

@@ -25,7 +25,7 @@
     "href": "index.html#education",
     "title": "Chinaza Nnamdi Portfolio",
     "section": "Education",
-    "text": "Education\nUniversity of North Carolina, Charlotte (Aug. 2023 – May 2025)\n\nMaster of Science in Bioinformatics (GPA: 3.9/4.0)\n\nUniversity of Ilorin, Ilorin, Nigeria (Sept. 2013 – Oct. 2017)\n\nBachelor of Science in Plant Biology (GPA: 3.84/4.0)"
+    "text": "Education\nUniversity of North Carolina, Charlotte (Aug. 2023 – May 2025)\n\nMaster of Science in Bioinformatics (GPA: 3.9/4.0)"
   },
   {
     "objectID": "index.html#professional-development",
@@ -46,7 +46,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch\nPlaceholder for a descriptive image\n\n\nMachine Learning: Placeholder for another project\n\n\nSingle Cell RNASeq\nPlaceholder for a descriptive image\n\n\nStructural Variant Genotyping with a Pangenome\nPlaceholder for a descriptive image\n\n\nBulk RNASeq with a Pan-transcriptome\nPlaceholder for a descriptive image\n\n\nCapstone Project for Computational Molecular Evolution Course\nPlaceholder for a descriptive image"
+    "text": "Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch\n\n\nStructural Variant Genotyping with a Pangenome\n\n\nBulk RNASeq with a Pan-transcriptome"
   },
   {
     "objectID": "machine_learning/background.html",

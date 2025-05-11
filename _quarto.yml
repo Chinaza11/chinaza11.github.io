@@ -13,18 +13,12 @@ book:
         - machine_learning/pca.ipynb
         - machine_learning/logistic_regression.ipynb
         - machine_learning/ann.ipynb
-    - part: "Single-Cell RNASeq"
-      chapters:
-        - single_cell_rnaseq/background.qmd
     - part: "Structural Variant Genotyping with a Pangenome"
       chapters: 
         - sv_genotyping/background.qmd
     - part: "Bulk RNASeq with a Pan-transcriptome"
       chapters: 
         - bulk_rnaseq_with_pantranscriptome/background.qmd
-    - part: "Capstone Project for Computational Molecular Evolution Course"
-      chapters: 
-        - capstone_for_cmr_course/background.qmd
 
 format:
   html:

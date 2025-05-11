@@ -1,3 +1,0 @@
-# Background {.unnumbered}
-
-This project will document my experience learning and implementing methodologies for single-cell RNASeq data analysis.

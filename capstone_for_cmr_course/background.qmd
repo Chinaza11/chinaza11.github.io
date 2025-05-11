@@ -1,3 +1,0 @@
-# Background {.unnumbered}
-
-I will be adding the capstone project from a computational molecular evolution course here.
