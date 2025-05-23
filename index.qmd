@@ -2,7 +2,7 @@
 
 ![](images/1664782058666.jpg){width="325"}
 
--   I am passionate about transforming data into valuable insights through the application of computational tools and statistical methodologies.
+-   I am passionate about transforming data into valuable insights through the application of computational, statistical and machine learning methodologies.
 
 -   I am experienced in the handling, analyzing, and leveraging of large, complex datasets to solve challenging problems, driving data-informed decision-making and operational improvements.
 
@@ -24,19 +24,17 @@
 
     -   Computing & automation: Nextflow, HPC, SLURM job scheduler, AWS.
 
--   [Bioinformatics tools:]{.underline} Muscle, Clustal-Omega, SIFT, Minimap2, CD-HIT, Bowtie2, STAR, Trimmomatic, mmquant, htseq-count, samtools, vcftools.
+    -   Other: Microsoft Excel, Tableau, Jupyter Notebook, Quarto.
+
+    -   [Bioinformatics tools:]{.underline} Muscle, Clustal-Omega, SIFT, Minimap2, CD-HIT, Bowtie2, STAR, Trimmomatic, mmquant, HTSeq-count, Samtools, Bcftools, VCFtools, vg toolkit, etc.
 
 -   [Libraries and Packages:]{.underline}
 
     -   Python: numpy, pandas, subprocess, concurrent, BeautifulSoup (bs4), requests, Scikit-Learn, matplotlib, seaborn.
 
-    -   R: tidyverse, ggplot2, UpSetR, DESeq2, glmmSeq, clusterProfiler, bioconductor.
+    -   R: tidyverse, plotly, stats, caret, lme4, rmarkdown, UpSetR, DESeq2, glmmSeq, clusterProfiler, bioconductor.
 
--   [Statistical and machine learning methods:]{.underline}
-
-    -   Statistics: experimental design, descriptive and inferential statistics, probability theory.
-
-    -   Machine learning: regression, random forest, K-means clustering, Principal Component Analysis (PCA), Artificial Neural Networks, Linear Discriminant Analysis, K-Nearest Neighbors.
+-   Statistical and machine learning methods.
 
 ## Work Experience
 
@@ -44,17 +42,17 @@
 
 *Department of Bioinformatics and Computational Biology, University of North Carolina, Charlotte, North Carolina*
 
--   Building a pipeline for structural variant genotyping using pangenome graphs, integrating tools like Vgtool kit, Minimap2, Cactus, etc.
+-   Leading a project with the goal of building a pipeline for structural variant genotyping using pangenome graphs, integrating tools like vg toolkit, Minimap2, Cactus, etc.
 
--   Employed statistical and machine learning methods such as Wald’s test, hypergeometric test, PCA to uncover novel genetic elements and the molecular mechanisms underlying biological processes. Some of these biological processes were the therapeutic effects of nutritional supplements and stress effects.
+-   Employed statistical and machine learning methods such as Wald’s test, hypergeometric test, regression, and principal component analysis (PCA) to uncover novel biomarkers and mechanisms underlying complex biological processes.
 
--   Utilized computational tools to construct a pan-transcriptome that helped uncover 70% more differentially expressed genes compared to when the conventional pipeline that involves a single reference genome was used.
+-   Led a project that constructed a pan-transcriptome and used it in a bulk-RNA seq data analysis pipeline, processing multi-terabyte datasets and uncovering 70% more differentially expressed genes compared to when the conventional pipeline that involves a single reference genome was used.
 
--   Developed a pipeline for bulk-RNA seq analysis with a pan-transcriptome as the reference sequence and processed datasets of over 8 TB in size.
+-   Utilized several R and Python packages for data processing and visualization, generating publication-ready plots.
 
--   Employed R (tidyverse, UpSetR, DESeq2, glmmSeq, clusterProfiler) and Python (pandas, subprocess, concurrent, bs4, requests, matplotlib) packages for data processing and visualization.
+-   Presented findings to diverse audiences – including academic collaborators, industry stakeholders, and interdisciplinary teams – through meetings, technical reports (peer-reviewed publications), non-technical reports, and professional conference presentations.
 
--   Expedited the execution of computational-intensive tasks by utilizing HPC environments, optimizing time-consuming tasks through parallel processing.
+-   Expedited computationally intensive tasks by leveraging HPC environments, reducing runtimes by up to 80% through parallel processing.
 
 -   Developed a workflow and documentation for the easy utilization of a legacy bioinformatic tool, reducing setup and execution time by 50%.
 
@@ -62,7 +60,10 @@
 
 University of North Carolina, Charlotte (Aug. 2023 – May 2025)
 
--   **Master of Science in Bioinformatics (GPA: 3.9/4.0)**
+**Master of Science in Bioinformatics (GPA: 3.9/4.0)**
+
+-   [Relevant courses:]{.underline} Bioinformatics Programming, Statistics for Bioinformatics, Machine Learning for Bioinformatics, Molecular Sequence Analysis, Design and Implementation of Bioinformatics Databases.
+-   [Leadership:]{.underline} Secretary, Bioinformatics Assembly of Students.
 
 ## Professional Development
 
@@ -76,6 +77,6 @@ Associate Data Scientist in R (DataCamp, Jan. 2024)
 
 ## Publication
 
--   **Nnamdi C.D.,** Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in *Sorghum bicolor*. *bioRxiv*. <https://doi.org/10.1101/2024.12.17.626333>
+-   **Nnamdi C.D.,** Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in *Sorghum bicolor*. *bioRxiv*. <https://doi.org/10.1101/2024.12.17.626333> \[Manuscript under review\].
 
--   El‐Khodor B.F., Reid, R.W., Dominique, A., Sanders, A., Lambirth, K., **Nnamdi C.D.,** et al. 2025. Investigating the molecular mechanisms underpinning the therapeutic effects of bovine thymus extract in *Caenorhabditis elegans.* \[Manuscript under preparation\].
+-   El‐Khodor B.F., Reid, R.W., Dominique, A., Sanders, A., Lambirth, K., **Nnamdi C.D.,** et al. 2025. Investigating the molecular mechanisms underpinning the therapeutic effects of bovine thymus extract in *Caenorhabditis elegans.* \[Manuscript under review\].
