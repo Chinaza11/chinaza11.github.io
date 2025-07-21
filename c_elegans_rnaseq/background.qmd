@@ -1,0 +1,9 @@
+# Background {.unnumbered}
+
+This project investigated the molecular mechanisms underpinning the therapeutic effects of bovine thymus extract on *Caenorhabditis elegans*. I performed the RNA-seq data analysis for this project and the codes are in this repository: <https://github.com/Chinaza11/c_elegans_rna_seq_data_analysis>
+
+This project resulted in a manuscript (see below) that is currently under review.
+
+Pohl F., **Nnamdi C.D.**, Sanders A., Lambirth K., Reid R.W., et al. 2025. Supplementation with bovine thymus extract improves survival, motility and stress resistance in *C. elegans*. Journal of Functional Foods. \[Manuscript under review\].
+
+Once the paper has been accepted for publication, I will update this page with more details on the RNA-seq data analysis I did for this project.

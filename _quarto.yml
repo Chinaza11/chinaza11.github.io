@@ -16,6 +16,9 @@ book:
     - part: "Structural Variant Genotyping with a Pangenome"
       chapters: 
         - sv_genotyping/background.qmd
+    - part: "*C. elegans* RNA-seq data analysis"
+      chapters: 
+        - c_elegans_rnaseq/background.qmd
     - part: "Bulk RNASeq with a Pan-transcriptome"
       chapters: 
         - bulk_rnaseq_with_pantranscriptome/background.qmd

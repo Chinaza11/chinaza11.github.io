@@ -46,7 +46,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch\n\n\nStructural Variant Genotyping with a Pangenome\n\n\nBulk RNASeq with a Pan-transcriptome"
+    "text": "Machine Learning: Building principal component analysis, logistic regression, and artificial neural network models from scratch\n\n\nStructural Variant Genotyping with a Pangenome\n\n\nC. elegans RNA-seq data analysis\n\n\nBulk RNASeq with a Pan-transcriptome"
   },
   {
     "objectID": "machine_learning/background.html",
@@ -117,5 +117,12 @@
     "title": "1  Background",
     "section": "1.2 Project Goals:",
     "text": "1.2 Project Goals:\n =&gt; Dimensionality reduction of data using PCA and extraction of interesting principal components.\n=&gt; Using extracted principal components to build logistic regression and ANN models to predict the target variables in the data.\n\n\nThe next pages will show the application of PCA, logistic regression, and ANN models."
+  },
+  {
+    "objectID": "c_elegans_rnaseq/background.html",
+    "href": "c_elegans_rnaseq/background.html",
+    "title": "Background",
+    "section": "",
+    "text": "This project investigated the molecular mechanisms underpinning the therapeutic effects of bovine thymus extract on Caenorhabditis elegans. I performed the RNA-seq data analysis for this project and the codes are in this repository: https://github.com/Chinaza11/c_elegans_rna_seq_data_analysis\nThis project resulted in a manuscript (see below) that is currently under review.\nPohl F., Nnamdi C.D., Sanders A., Lambirth K., Reid R.W., et al. 2025. Supplementation with bovine thymus extract improves survival, motility and stress resistance in C. elegans. Journal of Functional Foods. [Manuscript under review].\nOnce the paper has been accepted for publication, I will update this page with more details on the RNA-seq data analysis I did for this project."
   }
 ]

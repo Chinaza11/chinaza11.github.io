@@ -4,4 +4,6 @@
 
 ### [Structural Variant Genotyping with a Pangenome](https://chinaza11.github.io/sv_genotyping/background.html)
 
+### [*C. elegans* RNA-seq data analysis](https://chinaza11.github.io/c_elegans_rnaseq/background.html)
+
 ### [Bulk RNASeq with a Pan-transcriptome](https://chinaza11.github.io/bulk_rnaseq_with_pantranscriptome/background.html)
