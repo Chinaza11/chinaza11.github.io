@@ -18,21 +18,21 @@
 
 -   [Computational tools:]{.underline}
 
-    -   Programming, scripting & version control: Python, R, SQL, shell scripting, Git.
+    -   Programming, scripting & version control: Python, R, SAS, SQL, shell scripting, Git.
 
     -   Containerization & virtualization: Docker, Singularity, Conda.
 
-    -   Computing & automation: Nextflow, HPC, SLURM job scheduler, AWS.
+    -   Computing & automation: Nextflow, Snakemake, HPC, SLURM job scheduler, AWS.
 
     -   Other: Microsoft Excel, Tableau, Jupyter Notebook, Quarto.
 
-    -   [Bioinformatics tools:]{.underline} Muscle, Clustal-Omega, SIFT, Minimap2, CD-HIT, Bowtie2, STAR, Trimmomatic, mmquant, HTSeq-count, Samtools, Bcftools, VCFtools, vg toolkit, etc.
+    -   [Bioinformatics tools:]{.underline} Muscle, Clustal-Omega, SIFT, Minimap2, CD-HIT, Bowtie2, STAR, Trimmomatic, mmquant, HTSeq-count, Samtools, Bcftools, VCFtools, vg toolkit, GATK, PLINK, Cellranger, etc.
 
 -   [Libraries and Packages:]{.underline}
 
-    -   Python: numpy, pandas, subprocess, concurrent, BeautifulSoup (bs4), requests, Scikit-Learn, matplotlib, seaborn.
+    -   [Python:]{.underline} numpy, pandas, subprocess, concurrent, BeautifulSoup (bs4), requests, Scikit-Learn, matplotlib, seaborn, Tensorflow.
 
-    -   R: tidyverse, plotly, stats, caret, lme4, rmarkdown, UpSetR, DESeq2, glmmSeq, clusterProfiler, bioconductor.
+    -   [R:]{.underline} tidyverse, plotly, stats, UpSetR, glmmSeq, Seurat, caret, lme4, rmarkdown, Bioconductor (clusterProfiler, DESeq2, etc.).
 
 -   Statistical and machine learning methods.
 
@@ -42,11 +42,9 @@
 
 *Department of Bioinformatics and Computational Biology, University of North Carolina, Charlotte, North Carolina*
 
--   Leading a project with the goal of building a pipeline for structural variant genotyping using pangenome graphs, integrating tools like vg toolkit, Minimap2, Cactus, etc.
+-   Led projects that applied ETL workflows to build scalable pipelines for processing and analyzing multi-terabyte biological and omics datasets.
 
 -   Employed statistical and machine learning methods such as Wald’s test, hypergeometric test, regression, and principal component analysis (PCA) to uncover novel biomarkers and mechanisms underlying complex biological processes.
-
--   Led a project that constructed a pan-transcriptome and used it in a bulk-RNA seq data analysis pipeline, processing multi-terabyte datasets and uncovering 70% more differentially expressed genes compared to when the conventional pipeline that involves a single reference genome was used.
 
 -   Utilized several R and Python packages for data processing and visualization, generating publication-ready plots.
 
@@ -77,6 +75,6 @@ Associate Data Scientist in R (DataCamp, Jan. 2024)
 
 ## Publication
 
--   **Nnamdi C.D.,** Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in *Sorghum bicolor*. *bioRxiv*. <https://doi.org/10.1101/2024.12.17.626333> \[Manuscript under review\].
+-   Pohl F., **Nnamdi C.D.**, Sanders A., Lambirth K., Reid R.W., et al. 2025. Supplementation with bovine thymus extract improves survival, motility and stress resistance in *C. elegans*. *Journal of Functional Foods.* \[Manuscript under review\]. <https://github.com/Chinaza11/c_elegans_rna_seq_data_analysis>
 
--   El‐Khodor B.F., Reid, R.W., Dominique, A., Sanders, A., Lambirth, K., **Nnamdi C.D.,** et al. 2025. Investigating the molecular mechanisms underpinning the therapeutic effects of bovine thymus extract in *Caenorhabditis elegans.* \[Manuscript under review\].
+-   **Nnamdi C.D.,** Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in *Sorghum bicolor*. *bioRxiv*. <https://doi.org/10.1101/2024.12.17.626333> \[Manuscript under review\]. <https://github.com/Chinaza11/pantranscriptome_iron-deficiency_sorghum-genotypes>
