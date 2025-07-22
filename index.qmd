@@ -42,7 +42,7 @@
 
 *Department of Bioinformatics and Computational Biology, University of North Carolina, Charlotte, North Carolina*
 
--   Led projects that applied ETL workflows to build scalable pipelines for processing and analyzing multi-terabyte biological and omics datasets.
+-   Led projects that applied ETL workflows to build scalable pipelines for processing and analyzing multi-terabyte biomedical and omics datasets.
 
 -   Employed statistical and machine learning methods such as Wald’s test, hypergeometric test, regression, and principal component analysis (PCA) to uncover novel biomarkers and mechanisms underlying complex biological processes.
 

@@ -6,4 +6,4 @@ This is a project I am currently working on. I am building a pipeline for genoty
 
 -   Jouni Sirén et al. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. Science 374, abg8871 (2021). <https://doi.org/10.1126/science.abg8871>
 
-This project is a subset of a much bigger project that will lead to a paper that will be submitted to a peer-reviewed journal upon completion. I will be updating this webpage with the pipeline I have built once the paper has been accepted for publication.
+This project is a subset of a much bigger project that will lead to a manuscript that will be submitted to a peer-reviewed journal. I will be updating this webpage with the pipeline I have built once this manuscript has been accepted for publication.

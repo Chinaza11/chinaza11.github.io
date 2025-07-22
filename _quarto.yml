@@ -13,13 +13,13 @@ book:
         - machine_learning/pca.ipynb
         - machine_learning/logistic_regression.ipynb
         - machine_learning/ann.ipynb
-    - part: "Structural Variant Genotyping with a Pangenome"
+    - part: "Structural variants genotyping using a pangenome graph"
       chapters: 
         - sv_genotyping/background.qmd
     - part: "*C. elegans* RNA-seq data analysis"
       chapters: 
         - c_elegans_rnaseq/background.qmd
-    - part: "Bulk RNASeq with a Pan-transcriptome"
+    - part: "Bulk RNA-seq data analysis using a pan-transcriptome"
       chapters: 
         - bulk_rnaseq_with_pantranscriptome/background.qmd
 
