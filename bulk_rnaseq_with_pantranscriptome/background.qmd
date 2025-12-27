@@ -2,10 +2,8 @@
 
 This project delineated the benefits of using a pan-transcriptome in RNA-seq analysis compared to the conventional pipeline that uses a single reference genome. This project led to the manuscript below.
 
--   **Nnamdi C.D.,** Songsomboon K. Cooper, E.A., et al. 2025. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in *Sorghum bicolor*. *bioRxiv*. <https://doi.org/10.1101/2024.12.17.626333>
+-   **Nnamdi C.D.,** Songsomboon K. Cooper, E.A., et al. 2026. Utilizing a pan-transcriptome reveals genotype-specific responses to iron deficiency in *Sorghum bicolor*. *bioRxiv*. <https://doi.org/10.1101/2024.12.17.626333>
 
 This manuscript is currently undergoing final revisions for submission to a peer-reviewed journal.
 
 This is the GitHub repository for the analysis done in the manuscript: <https://github.com/Chinaza11/pantranscriptome_iron-deficiency_sorghum-genotypes>
-
-This webpage will be updated with more details on the analysis done in the manuscript once it has been accepted for publication.
